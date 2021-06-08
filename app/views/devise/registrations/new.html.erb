@@ -7,6 +7,7 @@
         <div class="form-group fixed-height">
           <%= f.error_notification %>
           <%= f.input :email,
+                      placeholder: "Ex: PetLover@mail.com",
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "email" } %>
@@ -20,14 +21,17 @@
                       input_html: { autocomplete: "new-password" },
                       label: "Confirmez votre mot de passe" %>
           <%= f.input :first_name,
+                      placeholder: "Ex: Brigitte",
                       required: true,
                       input_html: { autocomplete: "first-name" },
                       label: "Prénom" %>
           <%= f.input :last_name,
+                      placeholder: "Ex: Bardot",
                       required: true,
                       input_html: { autocomplete: "last-name" },
                       label: "Nom" %>
           <%= f.input :username,
+                      placeholder: "Ex: CathyCat63",
                       required: true,
                       input_html: { autocomplete: "username" },
                       label: "Pseudo" %>
@@ -35,10 +39,12 @@
                       required: true,
                       input_html: { autocomplete: "age" } %>
           <%= f.input :address,
+                      placeholder: "Ex: Rue Paradis, 13006 Marseille",
                       required: true,
                       input_html: { autocomplete: "address" },
                       label: "Adresse" %>
           <%= f.input :habitation_type,
+                      collection: ['Appartement', "Maison"],
                       required: true,
                       input_html: { autocomplete: "habitation-type" },
                       label: "Type de logement" %>
@@ -55,6 +61,7 @@
                       input_html: { autocomplete: "children" },
                       label: "Avez-vous des enfants ?" %>
           <%= f.input :description,
+                      placeholder: "Minimum 50 caractères",
                       required: true,
                       input_html: { autocomplete: "description" },
                       label: "Parlez-nous de vous" %>
@@ -62,7 +69,7 @@
                       required: true,
                       label: "Photo de profil" %>
           <div class="form-actions">
-            <%= f.button :submit, "Sign up" %>
+            <%= f.button :submit, "S'inscrire", class:"btn-log" %>
           </div>
         </div>
       </div>

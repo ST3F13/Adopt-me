@@ -6,3 +6,15 @@
 @import "navbar";
 @import "searchbar";
 @import "footer";
+@import "btn";
+
+.autolink {
+    color: $orange;
+    opacity: 0.6;
+}
+
+.autolink:hover {
+    color: $orange;
+    text-decoration: none;
+    opacity: 1;
+}

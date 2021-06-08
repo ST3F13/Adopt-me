@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, length: { minimum: 6 }
   validates :age, presence: true, numericality: { only_integer: true }
   validates :address, presence: true
-  validates :description, presence: true
+  validates :description, presence: true, length: { minimum: 50 }
   validates :habitation_type, presence: true, inclusion: { in: ["Maison", "Appartement", "Loft", "Studio"] }
   validates :garden, presence: true
   validates :animals, presence: true

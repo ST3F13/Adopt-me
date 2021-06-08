@@ -11,6 +11,11 @@
           <p>En attente de confirmation pour: <%= resource.unconfirmed_email %></p>
         <% end %>
 
+        <%= f.input :current_password,
+                    hint: "Veuillez renseigner votre mot de passe actuel",
+                    required: true,
+                    input_html: { autocomplete: "current-password" },
+                    label: "Mot de passe actuel" %>
         <%= f.input :password,
                     hint: "Laissez ce champ vide si vous ne souhaitez pas le modifier",
                     required: false,
@@ -21,11 +26,6 @@
                     required: false,
                     input_html: { autocomplete: "new-password" },
                     label: "Confirmez votre nouveau mot de passe" %>
-        <%= f.input :current_password,
-                    hint: "Veuillez renseigner votre mot de passe actuel",
-                    required: true,
-                    input_html: { autocomplete: "current-password" },
-                    label: "Mot de passe actuel" %>
         <%= f.input :first_name,
                     required: false,
                     input_html: { autocomplete: "first-name" },
@@ -46,6 +46,7 @@
                     input_html: { autocomplete: "address" },
                     label: "Adresse" %>
         <%= f.input :habitation_type,
+                    collection: ["Appartement", "Maison"],
                     required: false,
                     input_html: { autocomplete: "habitation-type" },
                     label: "Type de logement" %>
@@ -62,6 +63,7 @@
                     input_html: { autocomplete: "children" },
                     label: "Avez-vous des enfants ?" %>
         <%= f.input :description,
+                    hint: "50 caractères minimum",
                     required: false,
                     input_html: { autocomplete: "description" },
                     label: "Parlez-nous de vous" %>
@@ -69,7 +71,7 @@
                     required: false,
                     label: "Photo de profil" %>
         <div class="form-actions">
-          <%= f.button :submit, "Update" %>
+          <%= f.button :submit, "Mettre à jour", class:"btn-log" %>
         </div>
       </div>
     </div>

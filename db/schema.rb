@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_102652) do
 
   create_table "adoptions", force: :cascade do |t|
     t.text "adoption_message"
-    t.boolean "adopted"
+    t.boolean "adopted", default: false
     t.date "adopted_at"
     t.bigint "user_id", null: false
     t.bigint "pet_id", null: false

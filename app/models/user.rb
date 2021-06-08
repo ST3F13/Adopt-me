@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :description, presence: true, length: { minimum: 50 }
   validates :habitation_type, presence: true, inclusion: { in: ["Maison", "Appartement", "Loft", "Studio"] }
-  validates :garden, presence: true
-  validates :animals, presence: true
-  validates :children, presence: true
+  validates :garden, default: false
+  validates :animals, default: false
+  validates :children, default: false
 end

@@ -3,15 +3,17 @@
     <%= form_tag "#", method: :get, class: "input-group mb-3 searchbar" do %>
       <%= select_tag 'Type',
         options_for_select(Pet::TYPES),
+        :prompt => "Catégories",
         class: 'form-control transparence' %>
 
       <%= text_field_tag 'City', "",
         class: 'form-control transparence',
         placeholder: "Saisir une ville :" %>
 
-      <%= range_field_tag 'Range', :in => 0..100, :step => 10 %>
+      <%= range_field_tag 'Range', :in => 0..100, :step => 10,
+        class: 'form-range transparence' %>
 
-      <%= submit_tag "Search", class: "input-group-text btn-search" %>
+      <%= submit_tag "Rechercher", class: "input-group-text btn-search" %>
     <% end %>
 </div>
 

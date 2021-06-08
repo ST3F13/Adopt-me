@@ -1,0 +1,13 @@
+.btn-log {
+    color: $white;
+    background-color: $orange;
+    font-weight: 400;
+    margin-bottom: 16px;
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+.btn-log:hover {
+    color: $white;
+    opacity: 1;
+}

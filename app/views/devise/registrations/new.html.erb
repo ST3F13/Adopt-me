@@ -1,25 +1,73 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h2>Votre profil</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group fixed-height">
+          <%= f.error_notification %>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" },
+                      label: "Mot de passe" %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" },
+                      label: "Confirmez votre mot de passe" %>
+          <%= f.input :first_name,
+                      required: true,
+                      input_html: { autocomplete: "first-name" },
+                      label: "Prénom" %>
+          <%= f.input :last_name,
+                      required: true,
+                      input_html: { autocomplete: "last-name" },
+                      label: "Nom" %>
+          <%= f.input :username,
+                      required: true,
+                      input_html: { autocomplete: "username" },
+                      label: "Pseudo" %>
+          <%= f.input :age,
+                      required: true,
+                      input_html: { autocomplete: "age" } %>
+          <%= f.input :address,
+                      required: true,
+                      input_html: { autocomplete: "address" },
+                      label: "Adresse" %>
+          <%= f.input :habitation_type,
+                      required: true,
+                      input_html: { autocomplete: "habitation-type" },
+                      label: "Type de logement" %>
+          <%= f.input :garden,
+                      required: true,
+                      input_html: { autocomplete: "garden" },
+                      label: "Avez-vous un jardin ?" %>
+          <%= f.input :animals,
+                      required: true,
+                      input_html: { autocomplete: "animals" },
+                      label: "Avez-vous déjà des animaux ?" %>
+          <%= f.input :children,
+                      required: true,
+                      input_html: { autocomplete: "children" },
+                      label: "Avez-vous des enfants ?" %>
+          <%= f.input :description,
+                      required: true,
+                      input_html: { autocomplete: "description" },
+                      label: "Parlez-nous de vous" %>
+          <%= f.input :photo, as: :file,
+                      required: true,
+                      label: "Photo de profil" %>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

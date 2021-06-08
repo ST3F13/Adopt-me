@@ -10,3 +10,15 @@ Rails.application.routes.draw do
 
   end
 end
+
+#resources :offers do
+#    resources :bookings, only: [ :new, :create ]
+#    collection do
+#      get :my_offers
+#    end
+#  end
+#  resources :bookings, only: [:index] do
+#    collection do
+#      get :my_bookings
+#    end
+#  end

@@ -1,2 +1,50 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class ="container-bg">
+    <h1>People need Pets, Pets need People</h1>
+    <%= form_tag "#", method: :get, class: "input-group mb-3 searchbar" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control transparence",
+        placeholder: "Enter a city"
+      %>
+      <%= submit_tag "Search", class: "input-group-text btn-search" %>
+    <% end %>
+</div>
+
+<div class="content-home">
+  <h2>They've been adopted thanks to AdoptMe</h2>
+</div>
+
+
+<div class="cards">
+
+  <div class="card-trip">
+    <%= image_tag("dog1.jpg") %>
+    <div class="card-trip-infos">
+      <div>
+        <h2>Tenessee</h2>
+        <p>Adopted by Johny</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-trip">
+    <%= image_tag("cat1.jpg") %>
+    <div class="card-trip-infos">
+      <div>
+        <h2>Minnie</h2>
+        <p>Adopted by Lisa</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-trip">
+    <%= image_tag("snake1.jpg")%>
+    <div class="card-trip-infos">
+      <div>
+        <h2>Severus</h2>
+        <p>Adopted by Rogue</p>
+      </div>
+    </div>
+  </div>
+
+</div>

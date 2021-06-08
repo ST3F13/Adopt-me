@@ -1,17 +1,22 @@
 <div class ="container-bg">
     <h1>People need Pets, Pets need People</h1>
     <%= form_tag "#", method: :get, class: "input-group mb-3 searchbar" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control transparence",
-        placeholder: "Enter a city"
+      <%= select_tag 'Catégorie',
+        params[:category],
+        class: "form-control transparence"
       %>
-      <%= submit_tag "Search", class: "input-group-text btn-search" %>
+      <%= text_field_tag :query,
+        params[:city],
+        class: "form-control transparence",
+        placeholder: "Localisation"
+      %>
+      <%= range_field :discount, in: 1..100 %>
+      <%= submit_tag "Rechercher", class: "input-group-text btn-search" %>
     <% end %>
 </div>
 
 <div class="content-home">
-  <h2>They've been adopted thanks to AdoptMe</h2>
+  <h2>Ils ont été adoptés grâce à AdoptMe</h2>
 </div>
 
 
@@ -22,7 +27,7 @@
     <div class="card-trip-infos">
       <div>
         <h2>Tenessee</h2>
-        <p>Adopted by Johny</p>
+        <p>Adopté par Johnny</p>
       </div>
     </div>
   </div>
@@ -32,7 +37,7 @@
     <div class="card-trip-infos">
       <div>
         <h2>Minnie</h2>
-        <p>Adopted by Lisa</p>
+        <p>Adoptée par Lisa</p>
       </div>
     </div>
   </div>
@@ -42,7 +47,7 @@
     <div class="card-trip-infos">
       <div>
         <h2>Severus</h2>
-        <p>Adopted by Rogue</p>
+        <p>Adopté par Rogue</p>
       </div>
     </div>
   </div>

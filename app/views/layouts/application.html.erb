@@ -9,12 +9,23 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+     <%= favicon_link_tag asset_path('flavicon.png') %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
   </head>
 
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+    <body>
+    <div class="main">
+      <%= render 'shared/navbar' %>
 
-    <%= yield %>
+      <%= yield %>
+
+      <%= render 'shared/flashes' %>
+    </div>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>
+
+

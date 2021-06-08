@@ -13,10 +13,4 @@ class Pet < ApplicationRecord
   validates :hair, presence: true, inclusion: { in: ["Court", "Long"] }
   validates :personality, presence: true, inclusion: { in: ["Sociable", "Joueur", "Calme", "Energique", "Fort caractère"] }
   validates :gender, presence: true, inclusion: { in: ["Mâle", "Femelle"] }
-  validates :child_compatibility, presence: true
-  validates :garden_need, presence: true
-  validates :sterilized, presence: true
-  validates :puced, presence: true
-  validates :tattooed, presence: true
-  validates :vaccination, presence: true
 end

@@ -6,8 +6,20 @@ Rails.application.routes.draw do
     collection do
       get :my_pets
     end
-    resources :adoptions
+    member do
+      get :pet_owner
+    end
+    resources :adoptions, only: [:new, :create]
+  end
 
+  resources :adoptions, only: [:index, :show, :destroy] do
+    member do
+      get :adoption_user
+    end
+  end
+
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
   end
 end
 

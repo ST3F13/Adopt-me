@@ -76,6 +76,7 @@ class PetsController < ApplicationController
     else
       render :show
     end
+    authorize @pet
   end
 
   private

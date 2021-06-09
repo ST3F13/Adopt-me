@@ -5,23 +5,31 @@ class AdoptionPolicy < ApplicationPolicy
     end
   end
 
-  def index
+  def index?
     record.user == user
   end
 
-  def show
+  def show?
     record.user == user
   end
 
-  def create
+  def adoption_owner?
     true
   end
 
-  def update
+  def my_adoptions?
     record.user == user
   end
 
-  def destroy
+  def create?
+    true
+  end
+
+  def update?
+    record.user == user
+  end
+
+  def destroy?
     record.user == user
   end
 end

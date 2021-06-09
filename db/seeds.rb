@@ -47,11 +47,10 @@ pet1 = Pet.new({
     hair: "Court",
     personality: "Sociable",
     gender: "Mâle",
-    user_id: 1,
     address: "34 Rue Nicole Zemmour, 13009 Marseille",
     adopted: true
 })
-
+pet1.user = user1
 pet1.save
 
 pet2 = Pet.new({
@@ -64,12 +63,11 @@ pet2 = Pet.new({
     hair: "Long",
     personality: "Fort caractère",
     gender: "Femelle",
-    user_id: 2,
     address: "Rue des Champs Elysées 13230 Port-Saint-Louis-du-Rhône",
     adopted: true
 
 })
-
+pet2.user = user2
 pet2.save
 
 pet3 = Pet.new({
@@ -82,12 +80,11 @@ pet3 = Pet.new({
     hair: "Court",
     personality: "Calme",
     gender: "Femelle",
-    user_id: 2,
     address: "Rue des Champs Elysées 13230 Port-Saint-Louis-du-Rhône",
     adopted: true
 
 })
-
+pet3.user = user2
 pet3.save
 
 puts "created"

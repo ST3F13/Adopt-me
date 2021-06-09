@@ -80,15 +80,18 @@ class PetsController < ApplicationController
 
   private
 
-  def find_offer
-    @offer = Offer.find(params[:id])
-    authorize @offer
+  def find_pet
+    @pet = Pet.find(params[:id])
+    authorize @pet
   end
 
-  def offer_params
-    params.require(:offer).permit(:price_per_day, :capacity, :shell_type,
-                                  :start_available_time, :end_available_time,
-                                  :location_address, :description, :offer_title,
+  def pet_params
+    params.require(:offer).permit(:category, :name, :age,
+                                  :description, :race,
+                                  :address, :hair, :personality,
+                                  :gender, :child_compatibility,
+                                  :garden_need, :sterilized,
+                                  :puced, :tattooed, :vaccination, :adopted,
                                   photos: [])
   end
 end

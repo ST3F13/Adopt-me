@@ -13,7 +13,7 @@ class AdoptionPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def adoption_owner?
+  def adoption_user?
     true
   end
 
@@ -23,10 +23,6 @@ class AdoptionPolicy < ApplicationPolicy
 
   def create?
     true
-  end
-
-  def update?
-    record.user == user
   end
 
   def destroy?

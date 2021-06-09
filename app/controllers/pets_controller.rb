@@ -1,4 +1,5 @@
 class PetsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :pet_owner]
   before_action :find_pet, only: [:show, :pet_owner, :edit, :update]
 
   def index
@@ -87,12 +88,12 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:offer).permit(:category, :name, :age,
-                                  :description, :race,
-                                  :address, :hair, :personality,
-                                  :gender, :child_compatibility,
-                                  :garden_need, :sterilized,
-                                  :puced, :tattooed, :vaccination, :adopted,
-                                  photos: [])
+    params.require(:pet).permit(:category, :name, :age,
+                                :description, :race,
+                                :address, :hair, :personality,
+                                :gender, :child_compatibility,
+                                :garden_need, :sterilized,
+                                :puced, :tattooed, :vaccination, :adopted,
+                                photos: [])
   end
 end

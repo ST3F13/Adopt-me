@@ -4,7 +4,7 @@ class Pet < ApplicationRecord
   has_many_attached :photos
 
   TYPES = ["Chien", "Chat"]
-  validates :type, presence: true, inclusion: { in: TYPES }
+  validates :category, presence: true, inclusion: { in: TYPES }
   validates :name, presence: true
   validates :age, presence: true, numericality: { only_integer: true }
   validates :description, presence: true, length: { minimum: 50 }

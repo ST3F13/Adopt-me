@@ -1,6 +1,6 @@
 <div class ="container-bg">
     <h1>People need Pets, Pets need People</h1>
-    <%= form_tag "#", method: :get, class: "input-group mb-3 searchbar" do %>
+    <%= form_tag pets_path, method: :get, class: "input-group mb-3 searchbar" do %>
       <%= select_tag 'Type',
         options_for_select(Pet::TYPES),
         :prompt => "Catégorie",

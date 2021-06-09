@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :pets do
+  resources :pets, except: [:destroy] do
     collection do
       get :my_pets
     end
@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :adoptions, only: [:index, :show, :destroy] do
+    collection do
+      get :my_adoptions
+    end
     member do
       get :adoption_user
     end

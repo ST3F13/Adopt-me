@@ -5,7 +5,8 @@ class PetsController < ApplicationController
     if params[:Type].present? && params[:City].present? && params[:Range].present?
       @city = params[:City]
       @kms = params[:Range]
-    #  @pets = Pet.where(type: params[:Type]).near(@city, @kms)
+      @pets = Pet.near(@city, @kms)
+      raise
     else
       @pets = Pet.all
     end

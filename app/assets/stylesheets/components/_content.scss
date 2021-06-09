@@ -1,5 +1,5 @@
 .content-home {
-  background-color: white;
+  background-color: white !important;
   height: 320px;
   display: flex;
   justify-content: center;
@@ -14,4 +14,8 @@
 
 .main {
   min-height: 100vh;
+}
+
+body {
+   background-color: white !important;
 }

@@ -1,12 +1,12 @@
 class PetsController < ApplicationController
-  before_action :find_pet, only: [:show, :pet_owner, :edit, :update, :destroy]
+  before_action :find_pet, only: [:show, :pet_owner, :edit, :update]
 
   def index
     if params[:Type].present? && params[:City].present? && params[:Range].present?
       @city = params[:City]
+      @category = params[:Type]
       @kms = params[:Range]
-      @pets = Pet.near(@city, @kms)
-      raise
+      @pets = Pet.near(@city, @kms).select{ |pet| pet.category == @category }
     else
       @pets = Pet.all
     end
@@ -76,11 +76,6 @@ class PetsController < ApplicationController
     else
       render :show
     end
-  end
-
-  def destroy
-    @pet.destroy
-    redirect_to pets_path
   end
 
   private

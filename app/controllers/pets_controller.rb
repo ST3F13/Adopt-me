@@ -75,11 +75,13 @@ class PetsController < ApplicationController
     else
       render :show
     end
+    authorize @pet
   end
 
   def destroy
     @pet.destroy
     redirect_to pets_path
+    authorize @pet
   end
 
   private

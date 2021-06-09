@@ -14,6 +14,22 @@ class ApplicationPolicy
     false
   end
 
+  def pet_owner?
+    false
+  end
+
+  def my_pets?
+    false
+  end
+
+  def adoption_owner?
+    false
+  end
+
+  def my_adoptions?
+    false
+  end
+
   def create?
     false
   end

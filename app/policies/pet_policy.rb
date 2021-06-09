@@ -5,23 +5,27 @@ class PetPolicy < ApplicationPolicy
     end
   end
 
-  def index
+  def index?
     true
   end
 
-  def show
+  def show?
     true
   end
 
-  def create
+  def pet_owner?
     true
   end
 
-  def update
+  def my_pets?
     record.user == user
   end
 
-  def destroy
+  def create?
+    true
+  end
+
+  def update?
     record.user == user
   end
 end

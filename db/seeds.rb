@@ -45,10 +45,49 @@ pet1 = Pet.new({
     race: "Labrador",
     size: "Grand",
     hair: "Court",
-    personality: ["Sociable", "Calme"],
-    gender: "Mâle"
+    personality: "Sociable",
+    gender: "Mâle",
+    user_id: 1,
+    address: "34 Rue Nicole Zemmour, 13009 Marseille",
+    adopted: true
 })
 
 pet1.save
+
+pet2 = Pet.new({
+    category: "Chat",
+    name: "Minnie",
+    age: 2,
+    description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+    race: "Autre",
+    size: "Petit",
+    hair: "Long",
+    personality: "Fort caractère",
+    gender: "Femelle",
+    user_id: 2,
+    address: "Rue des Champs Elysées 13230 Port-Saint-Louis-du-Rhône",
+    adopted: true
+
+})
+
+pet2.save
+
+pet3 = Pet.new({
+    category: "Chat",
+    name: "Puce",
+    age: 10,
+    description: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum.",
+    race: "Siamois",
+    size: "Petit",
+    hair: "Court",
+    personality: "Calme",
+    gender: "Femelle",
+    user_id: 2,
+    address: "Rue des Champs Elysées 13230 Port-Saint-Louis-du-Rhône",
+    adopted: true
+
+})
+
+pet3.save
 
 puts "created"

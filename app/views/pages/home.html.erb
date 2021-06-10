@@ -8,13 +8,14 @@
 
       <%= text_field_tag 'City', "",
         class: 'form-control transparence',
+        id: "user_address",
         placeholder: "Localisation" %>
 
       <div class="home-searchbar-range">
         <span class="range-value">0 </span>
         <%= range_field_tag 'Range', :in => 0..100, :step => 10,
         class: 'form-range home-searchbar-range' %>
-        <span class="range-value"> 100</span>
+        <span class="range-value"> 100 km</span>
       </div>
 
       <%= submit_tag "Rechercher", class: "input-group-text btn-search btn-home-searchbar" %>

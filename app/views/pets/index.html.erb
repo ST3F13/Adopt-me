@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="page-title">
+    <h1>Nos animaux à l'adoption</h1>
+  </div>
+
+      <%= form_tag pets_path, method: :get, class: "input-group mb-3 searchbar" do %>
+      <%= select_tag 'Type',
+        options_for_select(Pet::TYPES),
+        :prompt => "Catégorie",
+        class: 'form-control transparence' %>
+
+      <%= text_field_tag 'City', "",
+        class: 'form-control transparence',
+        placeholder: "Localisation" %>
+
+      <div class="home-searchbar-range">
+        <span class="range-value">0 </span>
+        <%= range_field_tag 'Range', :in => 0..100, :step => 10,
+        class: 'form-range home-searchbar-range' %>
+        <span class="range-value"> 100</span>
+      </div>
+
+      <%= submit_tag "Rechercher", class: "input-group-text btn-search btn-home-searchbar" %>
+    <% end %>
+
+  <div class="card-filter">
+    <%= simple_form_for :search, url: pets_path, method:"GET" do |f|%>
+      <%= f.input :category, label:"Catégorie", collection: ["Chat", "Chien"], type:"hidden"%>
+      <%= f.button :submit, "Filtrer", class:"btn-log" %>
+      <% end %>
+  </div>
+
+  <div class="cards-container">
+    <div class="cards">
+      <% @pets.each do |pet| %>
+       <%= link_to pet_path(pet), class: "card-link" do %>
+          <div class="card-trip">
+            <% if pet.photos.attached? %>
+              <%= cl_image_tag pet.photos.first.key %>
+            <% else %>
+              <%= image_tag("petspix.jpeg") %>
+            <% end %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= pet.name %></h2>
+                <p><%= pet.description[0..50] %>...</p>
+                <br>
+              </div>
+              <% if pet.user.photo.attached? %>
+                <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
+              <% else %>
+                <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

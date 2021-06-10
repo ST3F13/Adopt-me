@@ -17,21 +17,22 @@ class PetsController < ApplicationController
         info_window: render_to_string(
           partial: "info_window",
           locals: { pet: pet }
-        ),
+        )
       #  image_url: helpers.asset_url('marker-snail-classic.jpg')
       }
     end
   end
 
   def show
+    @user = @pet.user
     @adoption = Adoption.new
     @markers = [{
       lat: @pet.latitude,
       lng: @pet.longitude,
       info_window: render_to_string(
-        partial: "info_window",
+        # partial: "info_window",
         locals: { pet: @pet }
-      ),
+      )
     #  image_url: helpers.asset_url('marker-snail-classic.jpg')
     }]
   end

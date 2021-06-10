@@ -1,0 +1,114 @@
+<div class="container-show">
+
+
+  <div class="pet-show-path">
+    <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Catégorie: '#{@pet.category}'", pets_path(), class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
+  </div>
+  <% if @pet.age == 1 %>
+    <h1><%= @pet.name %> - <%= @pet.age %> an</h1>
+  <% elsif @pet.age > 2%>
+    <h1><%= @pet.name %> - <%= @pet.age%> ans</h1>
+  <% else %>
+    <h1><%= @pet.name %> - <%= @pet.age * 12 %> mois</h1>
+  <% end %>
+  <h3><em><%= @pet.address %> -
+    <%= (Geocoder::Calculations.distance_between([@pet.latitude, @pet.longitude], [current_user.latitude, current_user.longitude])).round %>
+    km</em></h3>
+
+  <!-- Content section -->
+  <div class="content">
+
+    <!-- Images section -->
+    <div class="content-img">
+      <div class="pet-img-main">
+        <% if @pet.photos.attached? %>
+          <%= cl_image_tag @pet.photos.first.key, crop: :fill, class: "pet-img-main" %>
+          <div class="pet-img-secondary">
+            <% @pet.photos.each_with_index do |photo, index| %>
+              <% if index > 0 %>
+                <div class="pet-img-secondary-add">
+                  <%= cl_image_tag photo.key, crop: :fill, class: "pet-img-secondary-add" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% else %>
+          <%= image_tag("default.png", class: "pet-img-main") %>
+
+          <!-- Test (à retirer) -->
+          <div class="pet-img-secondary">
+            <div class="pet-img-secondary-add">
+              <%= image_tag("default.png", class: "pet-img-secondary-add") %>
+            </div>
+            <div class="pet-img-secondary-add">
+              <%= image_tag("default.png", class: "pet-img-secondary-add") %>
+            </div>
+            <div class="pet-img-secondary-add">
+              <%= image_tag("default.png", class: "pet-img-secondary-add") %>
+            </div>
+          </div>
+          <!-- -->
+
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Map section -->
+    <div class="content-infos">
+      <div id="map"
+        style="width: 100%; height: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+
+  <!-- Pet and Owner section -->
+  <div class="content">
+    <div class="story">
+      <h2>Voici son histoire</h2>
+      <div class="story-content">
+        <!-- Remplir avec l'histoire de l'animal -->
+        <p> <%= @pet.description %> </p>
+      </div>
+      <div class="contact">
+        <%= link_to "Adopter #{@pet.name}" %>
+      </div>
+    </div>
+    <div class="pet-owner-content">
+      <div class="pet-caracs-health">
+        <div class="pet-caracs">
+          <h4>Détails</h4>
+          <ul>
+            <li>Nom: <%= @pet.name %></li>
+            <li>Age: <%= @pet.age %></li>
+            <li>Race: <%= @pet.race %></li>
+            <li>Taille: <%= @pet.size %></li>
+            <li>Pelage: <%= @pet.hair %></li>
+            <li>Personalité: <%= @pet.personality %></li>
+            <li>Sex: <%= @pet.gender %></li>
+          </ul>
+        </div>
+        <div class="pet-health">
+          <h4>Sa santé</h4>
+        </div>
+      </div>
+      <div class="owner-infos">
+        <h4>A propos de son propriétaire</h4>
+        <div class="owner-infos-content">
+          <%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar" %>
+          <p><strong><%= @pet.user.first_name %> <%= @pet.user.last_name %></strong></p>
+        </div>
+        <%= link_to "En savoir plus", class: "btn btn-submit" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Owner link section -->
+  <div class="link-pet-owner">
+    <% if policy(@pet).edit? %>
+      <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "btn btn-submit" %>
+    <% end %>
+  </div>
+
+</div>

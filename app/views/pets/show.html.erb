@@ -72,7 +72,13 @@
         <p> <%= @pet.description %> </p>
       </div>
       <div class="contact">
-        <%= link_to "Adopter #{@pet.name}" %>
+        <% if @pet.user != current_user %>
+          <%= link_to "Adopter #{@pet.name}" %>
+        <% else %>
+          <% if policy(@pet).edit? %>
+            <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "link-pet-owner" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="pet-owner-content">
@@ -96,19 +102,18 @@
       <div class="owner-infos">
         <h4>A propos de son propriétaire</h4>
         <div class="owner-infos-content">
-          <%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar" %>
+          <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar-bordered" %>
+          <% else %>
+            <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
+          <% end %>
           <p><strong><%= @pet.user.first_name %> <%= @pet.user.last_name %></strong></p>
         </div>
-        <%= link_to "En savoir plus", class: "btn btn-submit" %>
+        <% if @pet.user != current_user %>
+          <%= link_to "En savoir plus", class: "btn btn-submit" %>
+        <% end %>
       </div>
     </div>
-  </div>
-
-  <!-- Owner link section -->
-  <div class="link-pet-owner">
-    <% if policy(@pet).edit? %>
-      <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "btn btn-submit" %>
-    <% end %>
   </div>
 
 </div>

@@ -152,6 +152,19 @@
   }
 }
 
-.pet-link-owner {
+.link-pet-owner {
   margin: 32px 0;
+  a {
+    text-decoration: none;
+    border: 3px solid #00EAD3;
+    background-color: #00EAD3;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    &:hover {
+      border: 3px solid #00EAD3;
+      background-color: #F5F5F5;
+    }
+  }
 }

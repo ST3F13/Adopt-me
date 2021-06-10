@@ -23,6 +23,11 @@
                   collection: ["Mâle", "Femelle"],
                   input_html: { class: "input-field" },
                   label_html: { class: 'label-field' } %>
+      <%= f.input :address,
+                  as: :string,
+                  label: "Son adresse",
+                  input_html: { id: "user_address" },
+                  label_html: { class: 'label-field' } %>
       <%= f.input :description,
                   label: "Parlez-nous de lui / elle",
                   placeholder: "Ex: Décrivez votre animal, son comportement, son caractère... (Min 50 caractères)",
@@ -35,7 +40,6 @@
                   label_html: { class: 'label-field' } %>
       <%= f.input :size,
                   label: "Quelle est sa taille ?",
-                  prompt: "Taille",
                   collection: ["Petit", "Moyen", "Grand"],
                   input_html: { class: "input-field" },
                   label_html: { class: 'label-field' } %>

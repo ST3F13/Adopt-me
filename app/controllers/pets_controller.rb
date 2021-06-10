@@ -4,10 +4,10 @@ class PetsController < ApplicationController
 
   def index
     @pets = policy_scope(Pet)
-    
+
     @city = params[:City] if params[:City].present?
     @kms = params[:Range] if params[:Range].present?
-    
+
     params[:Type].present? ? @category = params[:Type] : @category = nil
     params[:Size].present? ? @size = params[:Size] : @size = nil
     params[:Hair].present? ? @hair = params[:Hair] : @hair = nil
@@ -26,7 +26,7 @@ class PetsController < ApplicationController
       @pets = @pets.where(personality: @personality) unless @personality.nil?
       @pets = @pets.where(gender: @gender) unless @gender.nil?
       @pets = @pets.where(age: @age) unless @age.nil?
-   
+
 
     #if params[:Type].present? && params[:City].present? && params[:Range].present?
      # @city = params[:City]
@@ -120,7 +120,7 @@ class PetsController < ApplicationController
 
   def pet_params
     params.require(:pet).permit(:category, :name, :age,
-                                :description, :race,
+                                :description, :race, :size,
                                 :address, :hair, :personality,
                                 :gender, :child_compatibility,
                                 :garden_need, :sterilized,

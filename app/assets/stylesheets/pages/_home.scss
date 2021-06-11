@@ -21,3 +21,14 @@
   border-radius: 4px;
   padding-top: 48px;
 }
+
+.card-trip-home {
+  border: 3px solid transparent;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition-duration: 0.2s;
+  &:hover {
+    border: 3px solid #E85D05;
+  }
+}

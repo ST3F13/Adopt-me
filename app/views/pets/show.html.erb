@@ -2,7 +2,7 @@
 
 
   <div class="pet-show-path">
-    <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Catégorie: '#{@pet.category}'", pets_path(), class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
+    <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Catégorie: '#{@pet.category}'", request.referer.present? ? request.referer : pets_path, class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
   </div>
   <h1><%= @pet.name %> - <%= @pet.age %> mois</h1>
   <h3><em><%= @pet.address %> -
@@ -54,10 +54,10 @@
       </div>
       <div class="contact">
         <% if @pet.user != current_user && !@pet.adopted %>
-          <%= link_to "Adopter #{@pet.name}, new_pet_adoption_path(@pet)" %>
+          <%= link_to "Adopter #{@pet.name}", new_pet_adoption_path(@pet), class: "btn btn-submit" %>
         <% else %>
           <% if policy(@pet).edit? && !@pet.adopted %>
-            <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "link-pet-owner" %>
+            <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "btn btn-submit" %>
           <% end %>
         <% end %>
       </div>
@@ -65,19 +65,35 @@
     <div class="pet-owner-content">
       <div class="pet-caracs-health">
         <div class="pet-caracs">
-          <h4>Détails</h4>
+          <h4>Détails:</h4>
           <ul>
             <li>Nom: <%= @pet.name %></li>
+            <br>
             <li>Age: <%= @pet.age %></li>
             <li>Race: <%= @pet.race %></li>
             <li>Taille: <%= @pet.size %></li>
             <li>Poil: <%= @pet.hair %></li>
             <li>Personalité: <%= @pet.personality %></li>
+            <li>A l'aise avec des enfants: <%= @pet.child_compatibility ? "Oui" : "Non" %></li>
+            <br>
             <li>Genre: <%= @pet.gender %></li>
           </ul>
         </div>
         <div class="pet-health">
-          <h4>Sa santé</h4>
+          <h4>Suivi de sa santé:</h4>
+          <ul>
+            <% if @pet.gender == "Femelle"%>
+              <li>Stérilisée: <%= @pet.sterilized ? "Oui" : "Non" %></li>
+              <li>Pucée: <%= @pet.puced ? "Oui" : "Non" %></li>
+              <li>Tatouée: <%= @pet.tattooed ? "Oui" : "Non" %></li>
+              <li>Vaccinations à jour: <%= @pet.vaccination ? "Oui" : "Non" %></li>
+            <% else %>
+              <li>Stérilisé: <%= @pet.sterilized ? "Oui" : "Non" %></li>
+              <li>Pucé: <%= @pet.puced ? "Oui" : "Non" %></li>
+              <li>Tatoué: <%= @pet.tattooed ? "Oui" : "Non" %></li>
+              <li>Vaccinations à jour: <%= @pet.vaccination ? "Oui" : "Non" %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
       <div class="owner-infos">

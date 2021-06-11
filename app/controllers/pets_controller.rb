@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :pet_owner]
   before_action :find_pet, only: [:show, :pet_owner, :edit, :update]
+  skip_after_action :verify_authorized, only: [:my_pets]
 
   def index
     @pets = policy_scope(Pet)
@@ -80,7 +81,6 @@ class PetsController < ApplicationController
         @adoptions << pet.adoptions
       end
     end
-    authorize @pets
   end
 
   def new
@@ -120,7 +120,7 @@ class PetsController < ApplicationController
 
   def pet_params
     params.require(:pet).permit(:category, :name, :age,
-                                :description, :race,
+                                :description, :race, :size,
                                 :address, :hair, :personality,
                                 :gender, :child_compatibility,
                                 :garden_need, :sterilized,

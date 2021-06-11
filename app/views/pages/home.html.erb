@@ -39,7 +39,11 @@
         <div class="card-trip-infos">
           <div>
             <h2><%= pet.name %></h2>
-            <p>...</p>
+              <% if pet.gender == "Femelle" %>
+                <p>a été adoptée par <strong><%= pet.user.username %></strong></p>
+              <% else %>
+                <p>a été adopté par <strong><%= pet.user.username %></strong></p>
+              <% end %>
           </div>
         </div>
       </div>

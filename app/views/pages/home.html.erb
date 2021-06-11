@@ -28,23 +28,26 @@
   <h2>Ils ont été adoptés grâce à AdoptMe</h2>
 </div>
 
-
-<div class="cards">
-  <% @pets_adopted.each do |pet| %>
-    <%= link_to pet_path(pet), class: "card-link" do %>
-      <div class="card-trip card-trip-home">
-        <% if pet.photos.attached? %>
-          <%= cl_image_tag pet.photos.first.key %>
-        <% else %>
-          <%= image_tag("flavicon.png") %>
-        <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= pet.name %></h2>
-            <p><%= pet.description[0..50]... %></p>
+<div class="container">
+  <div class="cards">
+    <% @pets_adopted.each do |pet| %>
+      <%= link_to pet_path(pet), class: "card-link" do %>
+        <div class="card-trip card-trip-home">
+          <% if pet.photos.attached? %>
+            <%= cl_image_tag pet.photos.first.key %>
+          <% else %>
+            <%= image_tag("flavicon.png") %>
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= pet.name %></h2>
+              <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age%> mois</p>
+              <br>
+              <p><%= pet.description[0..50] %>...</p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

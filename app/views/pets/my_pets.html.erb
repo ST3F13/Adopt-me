@@ -4,7 +4,6 @@
   <% if @pets.empty? %>
     <p>Vous n'avez pas encore déposé d'annonce</p>
   <% else %>
-    <div class="cards-container">
       <div class="cards">
         <% @pets.each do |pet| %>
           <%= link_to pet_path(pet), class: "card-link" do %>
@@ -31,6 +30,5 @@
           <% end %>
         <% end %>
       </div>
-    </div>
   <% end %>
-</div>  
+</div>

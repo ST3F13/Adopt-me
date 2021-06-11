@@ -53,10 +53,10 @@
         <p> <%= @pet.description %> </p>
       </div>
       <div class="contact">
-        <% if @pet.user != current_user %>
-          <%= link_to "Adopter #{@pet.name}", new_pet_adoption_path(@pet) %>
+        <% if @pet.user != current_user && !@pet.adopted %>
+          <%= link_to "Adopter #{@pet.name}, new_pet_adoption_path(@pet)" %>
         <% else %>
-          <% if policy(@pet).edit? %>
+          <% if policy(@pet).edit? && !@pet.adopted %>
             <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "link-pet-owner" %>
           <% end %>
         <% end %>

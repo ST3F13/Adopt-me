@@ -45,6 +45,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition-duration: 0.2s;
 }
 
 .card-trip > img {
@@ -79,5 +80,18 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-adopted {
+  filter:grayscale(40%);
+  opacity: 0.8;
+  color: gray;
+}
+
+#adopted {
+  background-color: $orange;
+  z-index: 1000;
+  text-align: center;
+  color: white;
 }
 

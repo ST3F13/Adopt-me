@@ -1,0 +1,29 @@
+.filter {
+    //background-color: red;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 16px;
+}
+
+.card-filter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+.btn-filter {
+    color: $white;
+    background-color: $orange;
+    font-weight: 400;
+    
+    opacity: 0.8;
+    transition: opacity 0.5s;
+
+}
+
+.btn-filter:hover {
+    color: $white;
+    opacity: 1;
+}

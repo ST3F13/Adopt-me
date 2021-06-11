@@ -1,66 +1,68 @@
-<div class="form-container">
-  <div class="form-group fixed-height">
-    <h1 class="form-title">Votre animal à l'adoption</h1>
-    <%= simple_form_for(@pet) do |f| %>
-      <%= f.input :category,
-                  label: "Catégorie",
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' },
-                  collection: ["Chien", "Chat"] %>
-      <%= f.input :name,
-                  label: "Son nom",
-                  placeholder: "Ex: Medor",
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :age,
-                  label: "Son âge (en mois)",
-                  placeholder: "1, 2, 3...",
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :gender,
-                  label: "Mâle ou Femelle ?",
-                  prompt: "Genre",
-                  collection: ["Mâle", "Femelle"],
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :address,
-                  as: :string,
-                  label: "Son adresse",
-                  input_html: { id: "user_address" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :description,
-                  label: "Parlez-nous de lui / elle",
-                  placeholder: "Ex: Décrivez votre animal, son comportement, son caractère... (Min 50 caractères)",
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :race,
-                  label: "Quelle est sa race ?",
-                  placeholder: "Croisé si pas de race marticulière",
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :size,
-                  label: "Quelle est sa taille ?",
-                  collection: ["Petit", "Moyen", "Grand"],
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :hair,
-                  label: "Sa longueur de poils",
-                  collection: ["Court", "Long"],
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :personality,
-                  label: "Quelle est sa personnalité ?",
-                  collection: ["Sociable", "Joueur", "Calme", "Energique", "Fort caractère"],
-                  input_html: { class: "input-field" },
-                  label_html: { class: 'label-field' } %>
-      <%= f.input :child_compatibility, label: "Est-il adapté pour une famille avec des enfants ?" %>
-      <%= f.input :garden_need, label: "A-t-il besoin d'un jardin ?" %>
-      <%= f.input :sterilized, label: "Est-il stérilisé ?" %>
-      <%= f.input :puced, label: "Est-il pucé ?" %>
-      <%= f.input :tattooed, label: "Est-il tatoué ?" %>
-      <%= f.input :vaccination, label: "Est-il vacciné ?" %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Ajouter 1 à 4 photos", label_html: { class: 'label-field' } %>
-      <%= f.button :submit, "Créez l'annonce !", :class => "btn btn-lg btn-log" %>
-    <% end %>
+<div class="container">  
+  <div class="form-container">
+    <div class="form-group fixed-height">
+      <h1 class="form-title">Votre animal à l'adoption</h1>
+      <%= simple_form_for(@pet) do |f| %>
+        <%= f.input :category,
+                    label: "Catégorie",
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' },
+                    collection: ["Chien", "Chat"] %>
+        <%= f.input :name,
+                    label: "Son nom",
+                    placeholder: "Ex: Medor",
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :age,
+                    label: "Son âge (en mois)",
+                    placeholder: "1, 2, 3...",
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :gender,
+                    label: "Mâle ou Femelle ?",
+                    prompt: "Genre",
+                    collection: ["Mâle", "Femelle"],
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :address,
+                    as: :string,
+                    label: "Son adresse",
+                    input_html: { id: "user_address" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :description,
+                    label: "Parlez-nous de lui / elle",
+                    placeholder: "Ex: Décrivez votre animal, son comportement, son caractère... (Min 50 caractères)",
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :race,
+                    label: "Quelle est sa race ?",
+                    placeholder: "Croisé si pas de race marticulière",
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :size,
+                    label: "Quelle est sa taille ?",
+                    collection: ["Petit", "Moyen", "Grand"],
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :hair,
+                    label: "Sa longueur de poils",
+                    collection: ["Court", "Long"],
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :personality,
+                    label: "Quelle est sa personnalité ?",
+                    collection: ["Sociable", "Joueur", "Calme", "Energique", "Fort caractère"],
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        <%= f.input :child_compatibility, label: "Est-il adapté pour une famille avec des enfants ?" %>
+        <%= f.input :garden_need, label: "A-t-il besoin d'un jardin ?" %>
+        <%= f.input :sterilized, label: "Est-il stérilisé ?" %>
+        <%= f.input :puced, label: "Est-il pucé ?" %>
+        <%= f.input :tattooed, label: "Est-il tatoué ?" %>
+        <%= f.input :vaccination, label: "Est-il vacciné ?" %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Ajouter 1 à 4 photos", label_html: { class: 'label-field' } %>
+        <%= f.button :submit, "Créez l'annonce !", :class => "btn btn-log btn-submit" %>
+      <% end %>
+    </div>
   </div>
 </div>

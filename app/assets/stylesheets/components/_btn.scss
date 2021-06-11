@@ -11,3 +11,15 @@
     color: $white;
     opacity: 1;
 }
+
+.btn-submit {
+    color: $white!important;
+    opacity: 0.8!important;
+    transition: opacity 0.5s!important;
+}
+
+.btn-submit:hover {
+    color: $white!important;
+    background-color: $orange!important;
+    opacity: 1!important;
+}

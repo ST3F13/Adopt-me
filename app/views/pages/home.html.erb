@@ -6,10 +6,12 @@
         :prompt => "Catégorie",
         class: 'form-control transparence' %>
 
-      <%= text_field_tag 'City', "",
-        class: 'form-control transparence',
+      <div class="loc-field">
+        <%= text_field_tag 'City', "",
+        class: 'form-control transparence no-radius',
         id: "user_address",
         placeholder: "Localisation" %>
+      </div>
 
       <div class="home-searchbar-range">
         <span class="range-value">0 </span>

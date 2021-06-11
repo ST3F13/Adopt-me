@@ -82,3 +82,16 @@
   width: 40px;
 }
 
+.card-adopted {
+  filter:grayscale(40%);
+  opacity: 0.8;
+  color: gray;
+}
+
+#adopted {
+  background-color: $orange;
+  z-index: 1000;
+  text-align: center;
+  color: white;
+}
+

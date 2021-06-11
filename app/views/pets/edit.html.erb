@@ -1,6 +1,7 @@
-<div class="form-container">
-  <div class="form-group fixed-height">
-    <h1 class="form-title">Mettre à jour le profil de <%= @pet.name %></h1>
+<div class="container">
+  <div class="form-container">
+    <div class="form-group fixed-height">
+      <h1 class="form-title">Mettre à jour le profil de <%= @pet.name %></h1>
     <%= simple_form_for(@pet) do |f| %>
       <%= f.input :adopted, label: "Je suis adopté !" %>
       <%= f.input :name,
@@ -58,5 +59,6 @@
       <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Ajouter 1 à 4 photos", label_html: { class: 'label-field' } %>
       <%= f.button :submit, "Mettre l'annonce à jour !", :class => "btn btn-lg btn-log" %>
     <% end %>
+    </div>
   </div>
 </div>

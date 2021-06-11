@@ -1,4 +1,7 @@
-<h1><%= @user.first_name %></h1>
-
-<p><%= @user.age %></p>
+<h1><%= @user.first_name %>, <%= @user.age %> ans</h1>
+<% if @user.photo.attached? %>
+  <%= cl_image_tag @user.photo.key %>
+<% else %>
+  <%= image_tag("default_avatar.jpg") %>
+<% end %>
 <p><%= @user.description %></p>

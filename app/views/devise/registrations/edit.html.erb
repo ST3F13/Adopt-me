@@ -75,12 +75,13 @@
           <%= f.button :submit, "Mettre à jour", class:"btn-log" %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>  
 
-  <h3>Supprimer mon profil</h3>
+    <h3>Supprimer mon profil</h3>
 
-  <p>Vous souhaitez nous quitter ? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Supprimer définitivement votre profil ?" }, method: :delete %></p>
+    <p>Vous souhaitez nous quitter ? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Supprimer définitivement votre profil ?" }, method: :delete %></p>
 
-  <%= link_to "Précédent", :back %>
+    <%= link_to "Précédent", :back, class: "btn btn-log" %>
+  
 </div>

@@ -7,6 +7,16 @@
   }
 }
 
+.no-radius {
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.loc-field {
+  width: 48% !important;
+}
+
 .btn-search {
   opacity: 0.8;
   padding: 0 32px;
@@ -28,12 +38,14 @@
   align-items: center;
   border-top: 1px solid rgba(100, 100, 100, 0.8);
   border-bottom: 1px solid rgba(100, 100, 100, 0.8);
+  border-left: 1px solid rgba(100, 100, 100, 0.8);
   background-color: white;
   opacity: 0.6;
 }
 
 .btn-home-searchbar {
   border: 1px solid rgba(100, 100, 100, 0.8);
+  border-radius : 0 4px 4px 0;
 }
 
 .range-value {

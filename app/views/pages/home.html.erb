@@ -6,10 +6,12 @@
         :prompt => "Catégorie",
         class: 'form-control transparence' %>
 
-      <%= text_field_tag 'City', "",
-        class: 'form-control transparence',
+      <div class="loc-field">
+        <%= text_field_tag 'City', "",
+        class: 'form-control transparence no-radius',
         id: "user_address",
         placeholder: "Localisation" %>
+      </div>
 
       <div class="home-searchbar-range">
         <span class="range-value">0 </span>
@@ -26,27 +28,30 @@
   <h2>Ils ont été adoptés grâce à AdoptMe</h2>
 </div>
 
-
-<div class="cards">
-  <% @pets_adopted.each do |pet| %>
-    <%= link_to pet_path(pet), class: "card-link" do %>
-      <div class="card-trip card-trip-home">
-        <% if pet.photos.attached? %>
-          <%= cl_image_tag pet.photos.first.key %>
-        <% else %>
-          <%= image_tag("flavicon.png") %>
-        <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= pet.name %></h2>
+<div class="container">
+  <div class="cards">
+    <% @pets_adopted.each do |pet| %>
+      <%= link_to pet_path(pet), class: "card-link" do %>
+        <div class="card-trip card-trip-home">
+          <% if pet.photos.attached? %>
+            <%= cl_image_tag pet.photos.first.key %>
+          <% else %>
+            <%= image_tag("flavicon.png") %>
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= pet.name %></h2>
+              <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age%> mois</p>
+              <br>
               <% if pet.gender == "Femelle" %>
                 <p>a été adoptée par <strong><%= pet.user.username %></strong></p>
               <% else %>
                 <p>a été adopté par <strong><%= pet.user.username %></strong></p>
               <% end %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

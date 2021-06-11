@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="page-title">
     <h1>Nos animaux à l'adoption</h1>
   </div>
@@ -24,8 +25,9 @@
       <% end %>
 
     <div class="container-grid">
+
       <div class="card-filter">
-        <%= form_tag pets_path, method: :get, class: "input-group mb-3 searchbar" do %>
+        <%= form_tag pets_path, method: :get, class: "mb-3 filter" do %>
           <%= select_tag 'Type',
             options_for_select(Pet::TYPES),
             prompt: "Catégorie" %>
@@ -53,35 +55,59 @@
           class: 'form-range ' %>
           <span class="age-value"> 10+</span> -->
 
-          <%= submit_tag "Filtrer", class: "btn-log" %>
+          <%= submit_tag "Filtrer", class: "btn-filter" %>
         <% end %>
       </div>
 
       <div class="cards-container">
         <div class="cards">
           <% @pets.each do |pet| %>
-          <%= link_to pet_path(pet), class: "card-link" do %>
-              <div class="card-trip">
-                <% if pet.photos.attached? %>
-                  <%= cl_image_tag pet.photos.first.key %>
-                <% else %>
-                  <%= image_tag("flavicon.png") %>
-                <% end %>
-                <div class="card-trip-infos">
-                  <div>
-                    <h2><%= pet.name %></h2>
-                    <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age%> mois</p>
-                    <p><%= pet.description[0..50] %>...</p>
-                    <br>
-                  </div>
-                  <% if pet.user.photo.attached? %>
-                    <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
-                  <% else %>
-                    <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
-                  <% end %>
+            <% if pet.adopted? == true %>
+                <div class="card-trip card-adopted">
+                    <% if pet.photos.attached? %>
+                      <%= cl_image_tag pet.photos.first.key %>
+                    <% else %>
+                      <%= image_tag("flavicon.png") %>
+                    <% end %>
+                    <p id="adopted"> Adopté </p>
+                    <div class="card-trip-infos">
+                      <div>
+                        <h2><%= pet.name %></h2>
+                        <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age%> mois</p>
+                        <br>
+                        <p><%= pet.description[0..50] %>...</p>
+                      </div>
+                      <% if pet.user.photo.attached? %>
+                        <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                      <% else %>
+                        <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
+                      <% end %>
+                    </div>
                 </div>
-              </div>
-          <% end %>
+            <% else %>
+              <%= link_to pet_path(pet), class: "card-link" do %>
+                  <div class="card-trip card-trip-home">
+                    <% if pet.photos.attached? %>
+                      <%= cl_image_tag pet.photos.first.key %>
+                    <% else %>
+                      <%= image_tag("flavicon.png") %>
+                    <% end %>
+                    <div class="card-trip-infos">
+                      <div>
+                        <h2><%= pet.name %></h2>
+                        <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age%> mois</p>
+                        <br>
+                        <p><%= pet.description[0..50] %>...</p>
+                      </div>
+                      <% if pet.user.photo.attached? %>
+                        <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                      <% else %>
+                        <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -1,7 +1,12 @@
-<h1><%= @user.first_name %>, <%= @user.age %> ans</h1>
-<% if @user.photo.attached? %>
-  <%= cl_image_tag @user.photo.key %>
-<% else %>
-  <%= image_tag("default_avatar.jpg") %>
-<% end %>
-<p><%= @user.description %></p>
+<div class="container">
+    <h1><%= @user.first_name %>, <%= @user.age %> ans</h1>
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: "owner-pic" %>
+    <% else %>
+      <%= image_tag("default_avatar.jpg") %>
+    <% end %>
+    <h3>A propos de <%= @user.first_name %></h3>
+    <p><%= @user.description %></p>
+
+    <%= link_to "Précédent", :back, class: "btn btn-log" %>
+</div>

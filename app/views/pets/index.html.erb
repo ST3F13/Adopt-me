@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <div class="page-title">
     <h1>Nos animaux à l'adoption</h1>
   </div>
@@ -73,9 +73,9 @@
                     <div class="card-trip-infos">
                       <div>
                         <h2><%= pet.name %></h2>
-                        <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age%> mois</p>
-                        <p><%= pet.description[0..50] %>...</p>
+                        <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age%> mois</p>
                         <br>
+                        <p><%= pet.description[0..50] %>...</p>
                       </div>
                       <% if pet.user.photo.attached? %>
                         <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
@@ -86,7 +86,7 @@
                 </div>
             <% else %>
               <%= link_to pet_path(pet), class: "card-link" do %>
-                  <div class="card-trip">
+                  <div class="card-trip card-trip-home">
                     <% if pet.photos.attached? %>
                       <%= cl_image_tag pet.photos.first.key %>
                     <% else %>
@@ -95,9 +95,9 @@
                     <div class="card-trip-infos">
                       <div>
                         <h2><%= pet.name %></h2>
-                        <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age%> mois</p>
-                        <p><%= pet.description[0..50] %>...</p>
+                        <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age%> mois</p>
                         <br>
+                        <p><%= pet.description[0..50] %>...</p>
                       </div>
                       <% if pet.user.photo.attached? %>
                         <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
@@ -108,7 +108,7 @@
                   </div>
               <% end %>
             <% end %>
-          <% end %>  
+          <% end %>
         </div>
       </div>
     </div>

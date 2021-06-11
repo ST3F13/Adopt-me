@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 64px;
   background-color: white;
-  padding: 0 48px 48px 48px;
+  padding: 0;
 }
 
 // Smallest device
@@ -46,26 +46,35 @@
   background: white;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
   transition-duration: 0.2s;
+  height: 360px;
 }
 
 .card-trip > img {
-  height: 360px;
+  height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
 .card-trip h2 {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-trip p {
-  font-size: 24px;
+  font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
+.card-link {
+  margin-left: 0 !important;
+  color: black;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+}
 
 .card-trip .card-trip-infos {
   padding: 16px;
@@ -86,6 +95,10 @@
   filter:grayscale(40%);
   opacity: 0.8;
   color: gray;
+  border: 3px solid transparent;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
 #adopted {
@@ -94,4 +107,3 @@
   text-align: center;
   color: white;
 }
-

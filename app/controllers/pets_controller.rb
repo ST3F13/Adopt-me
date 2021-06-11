@@ -1,7 +1,6 @@
 class PetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :pet_owner]
   before_action :find_pet, only: [:show, :pet_owner, :edit, :update]
-  before_action :find_pet_adopted, only: [:index]
 
   def index
     @pets = policy_scope(Pet)
@@ -117,12 +116,6 @@ class PetsController < ApplicationController
   def find_pet
     @pet = Pet.find(params[:id])
     authorize @pet
-  end
-
-  def find_pets_adopted
-    @pets = Pet.all
-    @pets_adopted = (@pets.reverse.select { |pet| pet.adopted }).first(3)
-    authorize @pets
   end
 
   def pet_params

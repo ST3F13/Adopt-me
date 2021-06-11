@@ -23,8 +23,9 @@
   height: auto;
 }
 .pet-img-main {
-  width: 500px;
-  height: auto;
+  width: 600px;
+  height: 450px;
+  object-fit: cover;
   text-align: center;
   img {
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -33,13 +34,14 @@
 
 .pet-img-secondary {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin-top: 32px;
 }
 
 .pet-img-secondary-add {
   height: auto;
   width: 150px;
+  margin-right:32px;
 }
 
 .content-infos {

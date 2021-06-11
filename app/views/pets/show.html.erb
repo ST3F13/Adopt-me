@@ -57,7 +57,7 @@
           <%= link_to "Adopter #{@pet.name}, new_pet_adoption_path(@pet)" %>
         <% else %>
           <% if policy(@pet).edit? && !@pet.adopted %>
-            <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "link-pet-owner" %>
+            <%= link_to "Editer le profil de #{@pet.name}", edit_pet_path(@pet.id), class: "link-pet-owner" %>
           <% end %>
         <% end %>
       </div>

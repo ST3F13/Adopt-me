@@ -18,12 +18,13 @@
     <div class="content-img">
       <div class="pet-img-main">
         <% if @pet.photos.attached? %>
-          <%= cl_image_tag @pet.photos.first.key, crop: :fill, class: "pet-img-main" %>
+          <%= cl_image_tag @pet.photos.first.key, class: "pet-img-main" %>
+        </div>
           <div class="pet-img-secondary">
             <% @pet.photos.each_with_index do |photo, index| %>
               <% if index > 0 %>
                 <div class="pet-img-secondary-add">
-                  <%= cl_image_tag photo.key, crop: :fill, class: "pet-img-secondary-add" %>
+                  <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill, class: "pet-img-secondary-add" %>
                 </div>
               <% end %>
             <% end %>
@@ -32,12 +33,12 @@
           <%= image_tag("flavicon.png", class: "pet-img-main") %>
         <% end %>
       </div>
-    </div>
+    <!-- </div> -->
 
     <!-- Map section -->
     <div class="content-infos">
       <div id="map"
-        style="width: 100%; height: 100%;"
+        style="width: 800px; height: 594px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
@@ -74,7 +75,7 @@
             <li>Race: <%= @pet.race %></li>
             <li>Taille: <%= @pet.size %></li>
             <li>Poil: <%= @pet.hair %></li>
-            <li>Personalité: <%= @pet.personality %></li>
+            <li>Personnalité: <%= @pet.personality %></li>
             <li>A l'aise avec des enfants: <%= @pet.child_compatibility ? "Oui" : "Non" %></li>
             <br>
             <li>Genre: <%= @pet.gender %></li>

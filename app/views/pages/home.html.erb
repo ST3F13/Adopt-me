@@ -43,7 +43,11 @@
               <h2><%= pet.name %></h2>
               <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age%> mois</p>
               <br>
-              <p><%= pet.description[0..50] %>...</p>
+              <% if pet.gender == "Femelle" %>
+                <p>a été adoptée par <strong><%= pet.user.username %></strong></p>
+              <% else %>
+                <p>a été adopté par <strong><%= pet.user.username %></strong></p>
+              <% end %>
             </div>
           </div>
         </div>

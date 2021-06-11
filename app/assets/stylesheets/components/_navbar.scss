@@ -18,10 +18,10 @@
 
 .navbar-nav {
   align-items: center;
-}
-
-.navbar-nav ul li img {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+  img .avatar {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
 }

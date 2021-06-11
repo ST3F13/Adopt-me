@@ -1,13 +1,14 @@
 class PetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :pet_owner]
   before_action :find_pet, only: [:show, :pet_owner, :edit, :update]
+  before_action :find_pet_adopted, only: [:index]
 
   def index
     @pets = policy_scope(Pet)
-    
+
     @city = params[:City] if params[:City].present?
     @kms = params[:Range] if params[:Range].present?
-    
+
     params[:Type].present? ? @category = params[:Type] : @category = nil
     params[:Size].present? ? @size = params[:Size] : @size = nil
     params[:Hair].present? ? @hair = params[:Hair] : @hair = nil
@@ -26,7 +27,7 @@ class PetsController < ApplicationController
       @pets = @pets.where(personality: @personality) unless @personality.nil?
       @pets = @pets.where(gender: @gender) unless @gender.nil?
       @pets = @pets.where(age: @age) unless @age.nil?
-   
+
 
     #if params[:Type].present? && params[:City].present? && params[:Range].present?
      # @city = params[:City]
@@ -116,6 +117,12 @@ class PetsController < ApplicationController
   def find_pet
     @pet = Pet.find(params[:id])
     authorize @pet
+  end
+
+  def find_pets_adopted
+    @pets = Pet.all
+    @pets_adopted = (@pets.reverse.select { |pet| pet.adopted }).first(3)
+    authorize @pets
   end
 
   def pet_params

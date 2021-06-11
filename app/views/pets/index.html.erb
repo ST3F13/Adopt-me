@@ -26,29 +26,29 @@
     <div class="container-grid">
       <div class="card-filter">
         <%= form_tag pets_path, method: :get, class: "input-group mb-3 searchbar" do %>
-          <%= select_tag 'Type', 
-            options_for_select(Pet::TYPES), 
+          <%= select_tag 'Type',
+            options_for_select(Pet::TYPES),
             prompt: "Catégorie" %>
 
-          <%= select_tag 'Size', 
-            options_for_select(Pet::SIZE), 
+          <%= select_tag 'Size',
+            options_for_select(Pet::SIZE),
             prompt: "Taille" %>
 
-          <%= select_tag 'Hair', 
-            options_for_select(Pet::HAIR), 
+          <%= select_tag 'Hair',
+            options_for_select(Pet::HAIR),
             prompt: "Poil" %>
 
-          <%= select_tag 'Personality', 
+          <%= select_tag 'Personality',
             options_for_select(Pet::PERSONALITY),
             prompt: "Personnalité" %>
 
-          <%= select_tag 'Gender', 
-            options_for_select(Pet::GENDER), 
+          <%= select_tag 'Gender',
+            options_for_select(Pet::GENDER),
             prompt: "Sexe" %>
 
           <!-- <span class="age-value">0</span>
           <%= range_field_tag 'Age',
-          :in => 0..10, 
+          :in => 0..10,
           :step => 1,
           class: 'form-range ' %>
           <span class="age-value"> 10+</span> -->
@@ -70,7 +70,7 @@
                 <div class="card-trip-infos">
                   <div>
                     <h2><%= pet.name %></h2>
-                    <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age%> ans</p>
+                    <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age%> mois</p>
                     <p><%= pet.description[0..50] %>...</p>
                     <br>
                   </div>

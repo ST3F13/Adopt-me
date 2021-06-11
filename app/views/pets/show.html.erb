@@ -4,13 +4,7 @@
   <div class="pet-show-path">
     <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Catégorie: '#{@pet.category}'", pets_path(), class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
   </div>
-  <% if @pet.age == 1 %>
-    <h1><%= @pet.name %> - <%= @pet.age %> an</h1>
-  <% elsif @pet.age > 2%>
-    <h1><%= @pet.name %> - <%= @pet.age%> ans</h1>
-  <% else %>
-    <h1><%= @pet.name %> - <%= @pet.age * 12 %> mois</h1>
-  <% end %>
+  <h1><%= @pet.name %> - <%= @pet.age %> mois</h1>
   <h3><em><%= @pet.address %> -
     <% unless current_user.nil? %>
       <%= (Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [@pet.latitude, @pet.longitude])).round %>
@@ -36,21 +30,6 @@
           </div>
         <% else %>
           <%= image_tag("default.png", class: "pet-img-main") %>
-
-          <!-- Test (à retirer) -->
-          <div class="pet-img-secondary">
-            <div class="pet-img-secondary-add">
-              <%= image_tag("default.png", class: "pet-img-secondary-add") %>
-            </div>
-            <div class="pet-img-secondary-add">
-              <%= image_tag("default.png", class: "pet-img-secondary-add") %>
-            </div>
-            <div class="pet-img-secondary-add">
-              <%= image_tag("default.png", class: "pet-img-secondary-add") %>
-            </div>
-          </div>
-          <!-- -->
-
         <% end %>
       </div>
     </div>
@@ -75,7 +54,7 @@
       </div>
       <div class="contact">
         <% if @pet.user != current_user %>
-          <%= link_to "Adopter #{@pet.name}" %>
+          <%= link_to "Adopter #{@pet.name}", new_pet_adoption_path(@pet) %>
         <% else %>
           <% if policy(@pet).edit? %>
             <%= link_to "Editer le profil de #{@pet.name}",edit_pet_path(@pet.id), class: "link-pet-owner" %>
@@ -92,9 +71,9 @@
             <li>Age: <%= @pet.age %></li>
             <li>Race: <%= @pet.race %></li>
             <li>Taille: <%= @pet.size %></li>
-            <li>Pelage: <%= @pet.hair %></li>
+            <li>Poil: <%= @pet.hair %></li>
             <li>Personalité: <%= @pet.personality %></li>
-            <li>Sex: <%= @pet.gender %></li>
+            <li>Genre: <%= @pet.gender %></li>
           </ul>
         </div>
         <div class="pet-health">
@@ -112,7 +91,7 @@
           <p><strong><%= @pet.user.first_name %> <%= @pet.user.last_name %></strong></p>
         </div>
         <% if @pet.user != current_user %>
-          <%= link_to "En savoir plus", class: "btn btn-submit" %>
+          <%= link_to "En savoir plus", pet_owner_pet_path(@pet), class: "btn btn-submit" %>
         <% end %>
       </div>
     </div>

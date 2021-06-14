@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
+  add_flash_types :info, :error, :warning,
+                  :success_confirmation, :infos_confirmation, :warning_confirmation, :danger_confirmation
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username, :age, :address, :description, :habitation_type, :garden, :animals, :children, :photo])

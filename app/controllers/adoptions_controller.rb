@@ -32,8 +32,10 @@ class AdoptionsController < ApplicationController
     @owner = @pet.user
     authorize @adoption
     if @adoption.save
+      flash[:success_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a été crée avec succès!"
       redirect_to pet_path(@pet)
     else
+      flash[:warning_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a échouée!"
       render :new
     end
   end
@@ -41,6 +43,7 @@ class AdoptionsController < ApplicationController
   def destroy
     @adoption.destroy
     authorize @adoption
+    flash[:infos_confirmation] = "L'annonce d'adoption pour #{@adoption.pet.name} a été supprimée!"
     redirect_to adoptions_path
   end
 

@@ -14,3 +14,49 @@
     </button>
   </div>
 <% end %>
+
+<!-- Custom Alert -->
+
+<% if success_confirmation %>
+  <div class="alert-custom alert alert-dismissible" role="alert">
+    <div class="alert-content alert-success">
+      <h4><%= success_confirmation %></h4>
+      <button type="button-lg" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% end %>
+
+<% if infos_confirmation %>
+  <div class="alert-custom alert alert-dismissible" role="alert">
+    <div class="alert-content alert-primary">
+      <h4><%= infos_confirmation %></h4>
+      <button type="button-lg" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% end %>
+
+<% if warning_confirmation %>
+  <div class="alert-custom alert alert-dismissible" role="alert">
+    <div class="alert-content alert-warning">
+      <h4><%= warning_confirmation %></h4>
+      <button type="button-lg" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% end %>
+
+<% if danger_confirmation %>
+  <div class="alert-custom alert alert-dismissible" role="alert">
+    <div class="alert-content alert-danger">
+      <h4><%= danger_confirmation %></h4>
+      <button type="button-lg" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% end %>

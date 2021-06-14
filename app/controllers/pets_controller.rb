@@ -56,6 +56,7 @@ class PetsController < ApplicationController
   end
 
   def show
+    @pet_age = find_pet_age(@pet)
     @user = @pet.user
     @adoption = Adoption.new
     @markers = [{
@@ -123,7 +124,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:category, :name, :age,
+    params.require(:pet).permit(:category, :name, :months, :years,
                                 :description, :race, :size,
                                 :address, :hair, :personality,
                                 :gender, :child_compatibility,
@@ -131,4 +132,36 @@ class PetsController < ApplicationController
                                 :puced, :tattooed, :vaccination, :adopted,
                                 photos: [])
   end
+
+  def find_pet_age(pet)
+    authorize @pet
+    @pet_age = ""
+    if pet.months > 0
+      if pet.years > 0
+        if pet.years == 1
+          @pet_age = "#{pet.months} mois et #{pet.years} an."
+        else
+          @pet_age = "#{pet.months} mois et #{pet.years} ans."
+        end
+      end
+    elsif pet.years > 0
+      if pet.years == 1
+        @pet_age = "#{pet.years} an."
+      else
+        @pet_age = "#{pet.years} ans."
+      end
+    else
+      @pet_age = "Age non renseigné"
+    end
+    authorize @pet
+    return @pet_age
+  end
 end
+
+
+
+
+
+
+
+

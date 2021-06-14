@@ -4,11 +4,11 @@
       <%= select_tag 'Type',
         options_for_select(Pet::TYPES),
         :prompt => "Catégorie",
-        class: 'form-control transparence' %>
+        class: 'form-control transparence custom-background' %>
 
       <div class="loc-field">
         <%= text_field_tag 'City', "",
-        class: 'form-control transparence no-radius',
+        class: 'form-control transparence no-radius custom-background',
         id: "user_address",
         placeholder: "Localisation" %>
       </div>
@@ -16,11 +16,11 @@
       <div class="home-searchbar-range">
         <span class="range-value">0 </span>
         <%= range_field_tag 'Range', :in => 0..100, :step => 10,
-        class: 'form-range home-searchbar-range' %>
+        class: 'form-range home-searchbar-range custom-background' %>
         <span class="range-value"> 100 km</span>
       </div>
 
-      <%= submit_tag "Rechercher", class: "input-group-text btn-search btn-home-searchbar" %>
+      <%= submit_tag "Rechercher", class: "input-group-text btn-search btn-home-searchbar custom-background" %>
     <% end %>
 </div>
 

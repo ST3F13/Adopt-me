@@ -40,7 +40,7 @@
   border-bottom: 1px solid rgba(100, 100, 100, 0.8);
   border-left: 1px solid rgba(100, 100, 100, 0.8);
   background-color: white;
-  opacity: 0.6;
+  opacity: 0.9;
 }
 
 .btn-home-searchbar {
@@ -55,4 +55,9 @@
 
 .ap-name {
   color: #0E0000
+}
+
+.custom-background {
+  opacity: 0.9 !important;
+  color: rgba(0, 0, 0, 0.9) !important;
 }

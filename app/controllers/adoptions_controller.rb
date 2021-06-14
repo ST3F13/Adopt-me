@@ -32,10 +32,12 @@ class AdoptionsController < ApplicationController
     @owner = @pet.user
     authorize @adoption
     if @adoption.save
-      flash[:success_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a été crée avec succès!"
-      redirect_to pet_path(@pet)
+      @chatroom = Chatroom.new
+      @chatroom.adoption = @adoption
+      flash[:success_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a été créée avec succès!"
+      redirect_to pet_path(@pet) if @chatroom.save
     else
-      flash[:warning_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a échouée!"
+      flash[:warning_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a échoué !"
       render :new
     end
   end

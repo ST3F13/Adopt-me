@@ -12,15 +12,24 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Rechercher", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
           <%= link_to "Adopter", pets_path, class: "nav-link research-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "#",class: "nav-link navbar-icon" do %>
-            <%= image_tag "msg_logo.png" %>
-          <% end %>
+        <li class="nav-item dropdown">
+          <%= image_tag("msg_logo.png", class: "messagerie dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <% if current_user.adoptions %>
+              <% current_user.adoptions.each do |adoption| %>
+                <%= link_to "#{adoption.pet.name} & #{adoption.pet.user.username}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
+              <% end %>
+            <% end %>
+            <% current_user.pets.each do |pet| %>
+              <% if pet.adoptions %>
+                <% pet.adoptions.each do |adoption| %>
+                  <%= link_to "#{adoption.user.username} pour #{pet.name}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>

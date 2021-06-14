@@ -1,0 +1,18 @@
+.caro{
+    border: 3px solid transparent;
+    overflow: hidden;
+    min-height:100%;
+}
+
+.profile-details{
+    flex-grow: 1;
+    align-items: center;
+}
+
+.btn-logo {
+    color: $white;
+    background-color: $orange;
+    font-weight: 400;
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}

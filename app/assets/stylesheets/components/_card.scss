@@ -111,7 +111,14 @@
 
 #adopted {
   background-color: $orange;
-  z-index: 1000;
   text-align: center;
-  color: white;
+  color: white!important;
+}
+
+.adopted {
+  width:100%;
+  p {
+     color: $orange;
+     font-weight: bold;
+  }
 }

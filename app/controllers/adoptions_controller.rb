@@ -32,7 +32,9 @@ class AdoptionsController < ApplicationController
     @owner = @pet.user
     authorize @adoption
     if @adoption.save
-      redirect_to pet_path(@pet)
+      @chatroom = Chatroom.new
+      @chatroom.adoption = @adoption
+      redirect_to pet_path(@pet) if @chatroom.save
     else
       render :new
     end

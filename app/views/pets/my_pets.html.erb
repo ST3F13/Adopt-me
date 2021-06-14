@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>Vos annonces</h1>
-
+  <h1>Mes annonces</h1>
+<br>
   <% if @pets.empty? %>
     <p>Vous n'avez pas encore déposé d'annonce</p>
   <% else %>
@@ -19,7 +19,17 @@
                   <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age%> mois</p>
                   <p><%= pet.description[0..50] %>...</p>
                   <br>
-                </div>
+                  <div class="adopted">
+                    <h2>Personnes intéressées:</h2>
+                    <% @adoptions.each do |adoption| %>
+                      <% if adoption.first.pet == pet %>
+                        <% adoption.each do |a| %>
+                          <p><%= a.user.username %></p>
+                        <% end %>
+                       <% end %>
+                    <% end %>
+                  </div>
+                  </div>
                 <% if pet.user.photo.attached? %>
                   <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
                 <% else %>

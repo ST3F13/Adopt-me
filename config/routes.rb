@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :adoptions, only: [:new, :create]
   end
 
-  resources :adoptions, only: [:index, :show, :destroy] do
+  resources :adoptions, only: [:show, :destroy] do
     collection do
-      get :my_adoptions
+      get :my_adoptions, to: 'adoptions#index'
     end
     member do
       get :adoption_user

@@ -6,7 +6,7 @@ class AdoptionPolicy < ApplicationPolicy
   end
 
   def index?
-    record.user == user
+    user
   end
 
   def show?
@@ -18,7 +18,7 @@ class AdoptionPolicy < ApplicationPolicy
   end
 
   def my_adoptions?
-    record.user == user
+    user
   end
 
   def create?

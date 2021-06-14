@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Mes demandes d'adoptions</h1>
+<br>
+  <% if @adoptions.empty? %>
+    <p>Vous n'avez pas encore fait de demandes d'adoption.</p>
+  <% else %>
+      <div class="cards">
+        <% @adoptions.each do |adoption| %>
+          <%= link_to adoption_path(adoption), class: "card-link" do %>
+            <div class="card-trip card-trip-home">
+              <% if adoption.pet.photos.attached? %>
+                <%= cl_image_tag adoption.pet.photos.first.key %>
+              <% else %>
+                <%= image_tag("flavicon.png") %>
+              <% end %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= adoption.pet.name %></h2>
+                  <p> <%= adoption.pet.category %> - <%= adoption.pet.gender %>, <%= adoption.pet.age%> mois</p>
+                  <p><%= adoption.pet.description[0..50] %>...</p>
+                  <br>
+                </div>
+                <% if adoption.pet.user.photo.attached? %>
+                  <%= cl_image_tag adoption.pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                <% else %>
+                  <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+  <% end %>
+</div>

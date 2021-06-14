@@ -3,8 +3,7 @@ class AdoptionsController < ApplicationController
   before_action :find_adoption, only: [:show, :adoption_user, :destroy]
 
   def index
-    @adoptions = Adoption.all
-    authorize @adoptions
+    @adoptions = policy_scope(Adoption).where(user: current_user)
   end
 
   def show
@@ -12,8 +11,7 @@ class AdoptionsController < ApplicationController
   end
 
   def my_adoptions
-    @adoptions = Adoption.where(user: current_user)
-    authorize @adoptions
+    @adoptions = policy_scope(Adoption).where(user: current_user)
   end
 
   def adoption_user

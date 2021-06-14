@@ -34,8 +34,10 @@ class AdoptionsController < ApplicationController
     if @adoption.save
       @chatroom = Chatroom.new
       @chatroom.adoption = @adoption
+      flash[:success_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a été créée avec succès!"
       redirect_to pet_path(@pet) if @chatroom.save
     else
+      flash[:warning_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a échoué !"
       render :new
     end
   end
@@ -43,6 +45,7 @@ class AdoptionsController < ApplicationController
   def destroy
     @adoption.destroy
     authorize @adoption
+    flash[:infos_confirmation] = "L'annonce d'adoption pour #{@adoption.pet.name} a été supprimée!"
     redirect_to adoptions_path
   end
 

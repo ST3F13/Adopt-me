@@ -6,13 +6,14 @@
 
       <%= form_tag pets_path, method: :get, class: "input-group mb-3 searchbar" do %>
         <%= select_tag 'Type',
-          options_for_select(Pet::TYPES),
+          options_for_select(Pet::TYPES, params[:Type]),
           :prompt => "Catégorie",
           class: 'form-control transparence' %>
 
         <%= text_field_tag 'City', "",
           class: 'form-control transparence',
-          placeholder: "Localisation" %>
+          placeholder: "Localisation",
+          value: params[:City] %>
 
         <div class="home-searchbar-range">
           <span class="range-value">0 </span>
@@ -28,24 +29,30 @@
 
       <div class="card-filter">
         <%= form_tag pets_path, method: :get, class: "mb-3 filter" do %>
+          
+          <%= hidden_field_tag 'City', "",
+          class: 'form-control transparence',
+          placeholder: "Localisation",
+          value: params[:City] %>
+
           <%= select_tag 'Type',
-            options_for_select(Pet::TYPES),
+            options_for_select(Pet::TYPES, params[:Type]),
             prompt: "Catégorie" %>
 
           <%= select_tag 'Size',
-            options_for_select(Pet::SIZE),
+            options_for_select(Pet::SIZE, params[:Size]),
             prompt: "Taille" %>
 
           <%= select_tag 'Hair',
-            options_for_select(Pet::HAIR),
+            options_for_select(Pet::HAIR, params[:Hair]),
             prompt: "Poil" %>
 
           <%= select_tag 'Personality',
-            options_for_select(Pet::PERSONALITY),
+            options_for_select(Pet::PERSONALITY, params[:Personality]),
             prompt: "Personnalité" %>
 
           <%= select_tag 'Gender',
-            options_for_select(Pet::GENDER),
+            options_for_select(Pet::GENDER, params[:Gender]),
             prompt: "Sexe" %>
 
           <!-- <span class="age-value">0</span>

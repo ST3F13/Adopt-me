@@ -1,4 +1,4 @@
-<div class="container">  
+<div class="container">
   <div class="form-container">
     <div class="form-group fixed-height">
       <h1 class="form-title">Votre animal à l'adoption</h1>
@@ -13,11 +13,21 @@
                     placeholder: "Ex: Medor",
                     input_html: { class: "input-field" },
                     label_html: { class: 'label-field' } %>
-        <%= f.input :age,
-                    label: "Son âge (en mois)",
-                    placeholder: "1, 2, 3...",
+        <p>Quel est son âge ?</p>
+        <div class="age">
+          <div class="years">
+            <%= f.input :years,
+                    label: "Années",
+                    placeholder: "Années",
                     input_html: { class: "input-field" },
                     label_html: { class: 'label-field' } %>
+          </div>
+          <%= f.input :months,
+                    label: "Mois",
+                    placeholder: "Mois",
+                    input_html: { class: "input-field" },
+                    label_html: { class: 'label-field' } %>
+        </div>
         <%= f.input :gender,
                     label: "Mâle ou Femelle ?",
                     prompt: "Genre",

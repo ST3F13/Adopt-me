@@ -93,8 +93,10 @@ class PetsController < ApplicationController
     @pet.user = current_user
     authorize @pet
     if @pet.save
+      flash[:success_confirmation] = "L'annonce de #{@pet.name} a été crée avec succès!"
       redirect_to pets_path
     else
+      flash[:warning_confirmation] = "L'annonce de #{@pet.name} n'a pas été crée!"
       render :new
     end
   end
@@ -105,8 +107,10 @@ class PetsController < ApplicationController
   def update
     authorize @pet
     if @pet.update(pet_params)
+      flash[:infos_confirmation] = "L'annonce de #{@pet.name} a été mise à jour avec succès!"
       redirect_to @pet
     else
+      flash[:warning_confirmation] = "L'annonce de #{@pet.name} n'a pas été mise à jour!"
       render :show
     end
   end

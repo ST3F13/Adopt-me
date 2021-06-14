@@ -8,10 +8,11 @@ class Pet < ApplicationRecord
   HAIR = ["Court", "Long"]
   PERSONALITY = ["Sociable", "Joueur", "Calme", "Energique", "Fort caractère"]
   GENDER = ["Mâle", "Femelle"]
-  
+
   validates :category, presence: true, inclusion: { in: TYPES }
   validates :name, presence: true
-  validates :age, presence: true, numericality: { only_integer: true }
+  validates :months, presence: true, numericality: { only_integer: true }
+  validates :years, presence: true, numericality: { only_integer: true }
   validates :description, presence: true, length: { minimum: 50 }
   validates :address, presence: true
   validates :race, presence: true

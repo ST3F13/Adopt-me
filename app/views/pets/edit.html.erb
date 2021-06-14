@@ -9,11 +9,21 @@
                   placeholder: "Ex: Medor",
                   input_html: { class: "input-field" },
                   label_html: { class: 'label-field' } %>
-      <%= f.input :age,
-                  label: "Son âge (en mois)",
+      <p>Quel est son âge ?</p>
+      <div class="age">
+        <div class="years">
+          <%= f.input :years,
+                  label: "Années",
                   placeholder: "1, 2, 3...",
                   input_html: { class: "input-field" },
                   label_html: { class: 'label-field' } %>
+        </div>
+        <%= f.input :months,
+                  label: "Mois",
+                  placeholder: "1, 2, 3...",
+                  input_html: { class: "input-field" },
+                  label_html: { class: 'label-field' } %>
+      </div>
       <%= f.input :gender,
                   label: "Mâle ou Femelle ?",
                   prompt: "Genre",

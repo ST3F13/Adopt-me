@@ -15,16 +15,19 @@
           <%= link_to "Adopter", pets_path, class: "nav-link research-link" %>
         </li>
         <li class="nav-item dropdown">
-          <%= image_tag("msg_logo.png", class: "navbar-nav dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
+          <%= image_tag("msg_logo.png", class: "messagerie dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <% @adoptions = Adoption.where(user: current_user) %>
-            <% @adoptions.each do |adoption| %>
-              <% if adoption.user == current_user %>
-                <% @user = adoption.user %>
-              <% else %>
-                <% @user = adoption.pet.user %>
+            <% if current_user.adoptions %>
+              <% current_user.adoptions.each do |adoption| %>
+                <%= link_to "#{adoption.pet.name} & #{adoption.pet.user.username}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
               <% end %>
-              <%= link_to "#{adoption.pet.name} & #{adoption.pet.user.username}", "#", class: "dropdown-item" %>
+            <% end %>
+            <% current_user.pets.each do |pet| %>
+              <% if pet.adoptions %>
+                <% pet.adoptions.each do |adoption| %>
+                  <%= link_to "#{adoption.user.username} pour #{pet.name}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
+                <% end %>
+              <% end %>
             <% end %>
           </div>
         </li>

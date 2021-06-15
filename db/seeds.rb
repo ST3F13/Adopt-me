@@ -74,7 +74,7 @@ user4.save # -> A UTILISER LE JOUR DE LA DEMO, NE RIEN FAIRE DESSUS
 user5 = User.new({
   first_name: "Laure",
   last_name: "Giordano",
-  username: "MathémaCode",
+  username: "LauDu13",
   age: 45,
   address:"3 Rue Boris Vian, 13730 Saint-Victoret",
   description: "Hôtesse de l'air, indépendante, maman d'un petit garçon de 8 ans.",
@@ -125,7 +125,7 @@ user8 = User.new({
   password: "123456"
 })
 
-user8.save # -> Receuille les animaux abandonnés qu'elle trouve, mais en a bcp et ne peux pas s'en occuper correctement
+user8.save # -> Recueille les animaux abandonnés qu'elle trouve, mais en a bcp et ne peux pas s'en occuper correctement
 
 user9 = User.new({
   first_name: "Pauline",

@@ -8,6 +8,9 @@
 
 puts "destroying..."
 
+Message.destroy_all
+Chatroom.destroy_all
+Adoption.destroy_all
 Pet.destroy_all
 User.destroy_all
 
@@ -27,7 +30,7 @@ user1 = User.new({
     password: "123456"
 })
 
-user1.save
+user1.save!
 
 user2 = User.new({
     first_name: "Lisa",
@@ -41,7 +44,7 @@ user2 = User.new({
     password: "123456"
 })
 
-user2.save
+user2.save!
 
 user3 = User.new({
   first_name: "Olivier",
@@ -55,7 +58,7 @@ user3 = User.new({
   password: "123456"
 })
 
-user3.save
+user3.save!
 
 user4 = User.new({
   first_name: "Michaël",
@@ -69,7 +72,7 @@ user4 = User.new({
   password: "123456"
 })
 
-user4.save # -> A UTILISER LE JOUR DE LA DEMO, NE RIEN FAIRE DESSUS
+user4.save! # -> A UTILISER LE JOUR DE LA DEMO, NE RIEN FAIRE DESSUS
 
 user5 = User.new({
   first_name: "Laure",
@@ -83,7 +86,7 @@ user5 = User.new({
   password: "123456"
 })
 
-user5.save # -> GrandParents/Parents partent en maison de retraite
+user5.save! # -> GrandParents/Parents partent en maison de retraite
 
 user6 = User.new({
   first_name: "Paul",
@@ -97,7 +100,7 @@ user6 = User.new({
   password: "123456"
 })
 
-user6.save # -> Doit partir à l'étranger pour son travail
+user6.save! # -> Doit partir à l'étranger pour son travail
 
 user7 = User.new({
   first_name: "Jean",
@@ -111,12 +114,12 @@ user7 = User.new({
   password: "123456"
 })
 
-user7.save # -> Son animal est revenu après s'être enfuit, quelques semaines plus tard, il apprend qu'elle est enceinte
+user7.save! # -> Son animal est revenu après s'être enfuit, quelques semaines plus tard, il apprend qu'elle est enceinte
 
 user8 = User.new({
   first_name: "Julien",
   last_name: "Chnédaire",
-  username: "JCH",
+  username: "JulienCH",
   age: 34,
   address:"Avenue Domrémy, 13400 Aubagne",
   description: "J'aime les animaux, les belles voitures et les films de gangster.",
@@ -125,7 +128,7 @@ user8 = User.new({
   password: "123456"
 })
 
-user8.save # -> Recueille les animaux abandonnés qu'elle trouve, mais en a bcp et ne peux pas s'en occuper correctement
+user8.save! # -> Recueille les animaux abandonnés qu'elle trouve, mais en a bcp et ne peux pas s'en occuper correctement
 
 user9 = User.new({
   first_name: "Pauline",
@@ -139,7 +142,7 @@ user9 = User.new({
   password: "123456"
 })
 
-user9.save # -> Travaille pour la SPA
+user9.save! # -> Travaille pour la SPA
 
 user10 = User.new({
   first_name: "Emma",
@@ -153,7 +156,7 @@ user10 = User.new({
   password: "123456"
 })
 
-user10.save # -> Gère une association locale pour les animaux
+user10.save! # -> Gère une association locale pour les animaux
 
 puts "users created !"
 

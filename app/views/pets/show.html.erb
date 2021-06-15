@@ -5,11 +5,11 @@
     <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Précedent", :back, class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
   </div>
   <h1><%= @pet.name %> - <%= @pet.age_description %></h1>
-  <h3><em><%= @pet.address %> -
-    <% unless current_user.nil? %>
-      <%= (Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [@pet.latitude, @pet.longitude])).round %>
+  <h3><em><%= @pet.address %>
+    <% unless current_user.nil? || current_user.latitude.nil? %>
+       - <%= (Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [@pet.latitude, @pet.longitude])).round %> km
     <% end %>
-    km</em></h3>
+    </em></h3>
 
   <!-- Content section -->
   <div class="content">

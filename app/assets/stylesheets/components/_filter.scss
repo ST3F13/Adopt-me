@@ -3,7 +3,9 @@
     padding: 32px;
     height:100%;
     width: 200px;
-}
+    display: flex;
+    flex-direction: column;
+  }
 
 .card-filter {
     display: flex;
@@ -23,7 +25,9 @@
     transition: opacity 0.5s;
     border: none;
     margin-top: 20px;
-    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 64px;
 }
 
 .btn-filter:hover {

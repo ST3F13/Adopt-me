@@ -15,20 +15,29 @@
           <%= link_to "Adopter", pets_path, class: "nav-link research-link" %>
         </li>
         <li class="nav-item active">
-        <%= link_to "Déposer une annonce", new_pet_path, class: "dropdown-item" %>
+        <%= link_to "Déposer une annonce", new_pet_path, class: "nav-link research-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag("msg_logo.png", class: "messagerie dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <% if current_user.adoptions %>
-              <% current_user.adoptions.each do |adoption| %>
-                <%= link_to "#{adoption.pet.name} & #{adoption.pet.user.username}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
-              <% end %>
-            <% end %>
-            <% current_user.pets.each do |pet| %>
-              <% if pet.adoptions %>
-                <% pet.adoptions.each do |adoption| %>
-                  <%= link_to "#{adoption.user.username} pour #{pet.name}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
+            <% chatrooms = current_user.chatrooms %>
+            <% adoptions = current_user.adoptions %>
+            <% pets = current_user.pets %>
+            <% if chatrooms.empty? %>
+              <p class="no-message">Vous n'avez pas de messagerie ouverte</p>
+            <% else %>
+              <% chatrooms.each do |chatroom| %>
+                <% unless adoptions.nil? %>
+                  <% adoptions.each do |adoption| %>
+                    <%= link_to "#{adoption.pet.name} & #{adoption.pet.user.username}", chatroom_path(chatroom), class: "dropdown-item" %>
+                  <% end %>
+                <% end %>
+                <% unless pets.nil? %>
+                  <% pets.each do |pet| %>
+                    <% pet.adoptions.each do |adoption| %>
+                      <%= link_to "#{adoption.user.username} pour #{pet.name}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
+                    <% end %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>

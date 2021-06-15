@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_054237) do
     t.boolean "adopted", default: false
     t.integer "months", default: 0
     t.integer "years", default: 0
-    t.string "age_description"
+    t.string "age_description", default: ""
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 

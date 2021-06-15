@@ -32,6 +32,11 @@ class AdoptionsController < ApplicationController
     if @adoption.save
       @chatroom = Chatroom.new
       @chatroom.adoption = @adoption
+      @message = Message.new
+      @message.content = @adoption.adoption_message
+      @message.user = current_user
+      @message.chatroom = @chatroom
+      @message.save
       flash[:success_confirmation] = "Votre demande d'adoption pour #{@adoption.pet.name} a été créée avec succès!"
       redirect_to pet_path(@pet) if @chatroom.save
     else

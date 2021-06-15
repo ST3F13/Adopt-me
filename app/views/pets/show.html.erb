@@ -2,7 +2,7 @@
 
 
   <div class="pet-show-path">
-    <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Catégorie: '#{@pet.category}'", pets_path, class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
+    <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Précedent", :back, class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
   </div>
   <h1><%= @pet.name %> - <%= @pet.age_description %></h1>
   <h3><em><%= @pet.address %> -

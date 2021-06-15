@@ -19,4 +19,14 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def chatrooms
+    @user = self
+    @chatrooms = []
+    if @user.adoptions
+      @user.adoptions.each do |adoption|
+        @chatrooms << adoption.chatroom
+      end
+    end
+  end
 end

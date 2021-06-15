@@ -23,4 +23,37 @@ class Pet < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  after_validation :set_pet_age
+
+  private
+
+  def set_pet_age
+    @pet = self
+    if @pet.months >= 12
+      set_months = (@pet.months % 12)
+      set_years = (@pet.months / 12).floor
+      @pet.months = set_months
+      @pet.years += set_years
+    end
+    if @pet.months.positive?
+      if @pet.years.positive?
+        if @pet.years == 1
+          @pet.age_description = "#{@pet.years} an et #{@pet.months} mois"
+        else
+          @pet.age_description = "#{@pet.years} ans et #{@pet.months} mois"
+        end
+      else
+        @pet.age_description = "#{@pet.months} mois"
+      end
+    elsif @pet.years.positive?
+      if @pet.years == 1
+        @pet.age_description = "#{@pet.years} an"
+      else
+        @pet.age_description = "#{@pet.years} ans"
+      end
+    else
+      @pet.age_description = "Non renseigné"
+    end
+  end
 end

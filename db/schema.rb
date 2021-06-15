@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_133457) do
+ActiveRecord::Schema.define(version: 2021_06_15_054237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_133457) do
     t.boolean "adopted", default: false
     t.integer "months", default: 0
     t.integer "years", default: 0
+    t.string "age_description"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 

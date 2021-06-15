@@ -91,7 +91,8 @@ pet1 = Pet.new({
     personality: "Sociable",
     gender: "Mâle",
     address: "34 Rue Nicole Zemmour, 13009 Marseille",
-    adopted: true
+    adopted: true,
+    age_description: ""
 })
 pet1.user = user1
 pet1.save
@@ -107,8 +108,8 @@ pet2 = Pet.new({
     personality: "Fort caractère",
     gender: "Femelle",
     address: "Rue des Champs Elysées 13230 Port-Saint-Louis-du-Rhône",
-    adopted: true
-
+    adopted: true,
+    age_description: ""
 })
 pet2.user = user2
 pet2.save
@@ -124,8 +125,8 @@ pet3 = Pet.new({
     personality: "Calme",
     gender: "Femelle",
     address: "Rue des Champs Elysées 13230 Port-Saint-Louis-du-Rhône",
-    adopted: true
-
+    adopted: true,
+    age_description: ""
 })
 pet3.user = user2
 pet3.save
@@ -142,7 +143,8 @@ pet4 = Pet.new({
   hair: "Long",
   personality: "Sociable",
   gender: "Mâle",
-  adopted: false
+  adopted: false,
+  age_description: ""
 })
 
 pet4.user = user4
@@ -160,7 +162,8 @@ pet5 = Pet.new({
   hair: "Long",
   personality: "Calme",
   gender: "Femelle",
-  adopted: false
+  adopted: false,
+  age_description: ""
 })
 
 pet5.user = user3

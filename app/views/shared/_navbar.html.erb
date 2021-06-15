@@ -23,6 +23,7 @@
             <% chatrooms = current_user.chatrooms %>
             <% adoptions = current_user.adoptions %>
             <% pets = current_user.pets %>
+
             <% if chatrooms.empty? %>
               <p class="no-message">Vous n'avez pas de messagerie ouverte</p>
             <% else %>
@@ -41,6 +42,7 @@
                 <% end %>
               <% end %>
             <% end %>
+
           </div>
         </li>
         <li class="nav-item dropdown">

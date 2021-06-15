@@ -59,9 +59,20 @@
 }
 
 .content-img {
+  object-fit: contain;
   display: block;
   width: 600px;
-  height: 600px;
+  height: 400px;
+}
+
+.custom-control {
+  background-color: rgba(1, 1, 1, 0.3);
+  border-radius: 50%;
+}
+
+.custom-control-nav {
+  background-color: rgba(1, 1, 1, 0.3);
+  border-radius: 8px;
 }
 
 .pet-img-main {
@@ -99,7 +110,7 @@
 
 .story-content {
   padding: 32px;
-  text-align: left;
+  text-align: center;
   justify-content: space-between;
 }
 

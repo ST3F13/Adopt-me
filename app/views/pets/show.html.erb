@@ -2,7 +2,7 @@
 
 
   <div class="pet-show-path">
-    <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Catégorie: '#{@pet.category}'", pets_path, class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
+    <p><em><%= link_to "Home", root_path, class: "pet-show-path" %> / <%= link_to "Précedent", :back, class: "pet-show-path" %> / <%= @pet.name %> et <%= @pet.user.username  %> </em></p><!-- Arborescence path -->
   </div>
   <h1><%= @pet.name %> - <%= @pet.age_description %></h1>
   <h3><em><%= @pet.address %> -
@@ -14,30 +14,55 @@
   <!-- Content section -->
   <div class="content">
 
-    <!-- Images section -->
+
+
+    <!-- Images section (carousel)-->
     <div class="content-img">
-      <div class="pet-img-main">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <% if @pet.photos.attached? %>
-          <%= cl_image_tag @pet.photos.first.key, crop: :fill, class: "pet-img-main" %>
-          <div class="pet-img-secondary">
+          <ol class="carousel-indicators custom-control-nav">
             <% @pet.photos.each_with_index do |photo, index| %>
-              <% if index > 0 %>
-                <div class="pet-img-secondary-add">
-                  <%= cl_image_tag photo.key, crop: :fill, class: "pet-img-secondary-add" %>
+              <% if index == 0 %>
+                <li data-target="#carouselExampleIndicators" data-slide-to= <%= "#{index}" %>, class="active"></li>
+              <% else %>
+                <li data-target="#carouselExampleIndicators" data-slide-to= <%= "#{index}" %>></li>
+              <% end %>
+            <% end %>
+          </ol>
+          <div class="carousel-inner">
+            <% @pet.photos.each_with_index do |photo, index| %>
+              <% if index == 0 %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag photo.key, class: "d-block w-100 content-img" %>
+                </div>
+              <% else %>
+                <div class="carousel-item">
+                  <%= cl_image_tag photo.key, class: "d-block w-100 content-img" %>
                 </div>
               <% end %>
             <% end %>
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon custom-control" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next " href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon custom-control" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         <% else %>
-          <%= image_tag "flavicon.png", class: "pet-img-main" %>
+          <div class="pet-img-main">
+            <%= image_tag("flavicon.png", class: "pet-img-main") %>
+          </div>
         <% end %>
       </div>
     </div>
 
+
     <!-- Map section -->
     <div class="content-map">
       <div id="map"
-        style="width: 500px; height: 600px;"
+        style="width: 500px; height: 400px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>

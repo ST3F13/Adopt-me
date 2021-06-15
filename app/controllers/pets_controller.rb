@@ -57,6 +57,7 @@ class PetsController < ApplicationController
 
   def show
     @user = @pet.user
+    @adoptions = @pet.adoptions
     @adoption = Adoption.new
     @markers = [{
       lat: @pet.latitude,

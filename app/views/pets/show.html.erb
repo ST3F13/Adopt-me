@@ -77,7 +77,11 @@
         <p> <%= @pet.description %> </p>
       </div>
       <div class="contact">
-        <% if @pet.user != current_user && !@pet.adopted %>
+        <% i = true %>
+        <% @adoptions.each do |adoption| %>
+          <% i = false if adoption.user == current_user %>
+        <% end %>
+        <% if @pet.user != current_user && !@pet.adopted && i %>
           <%= link_to "Adopter #{@pet.name}", new_pet_adoption_path(@pet), class: "btn btn-submit" %>
         <% else %>
           <% if policy(@pet).edit? && !@pet.adopted %>

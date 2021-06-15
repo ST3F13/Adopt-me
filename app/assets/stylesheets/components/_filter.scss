@@ -1,29 +1,57 @@
 .filter {
-    //background-color: red;
-    width: 50%;
+   // background-color: red;
+    padding: 32px;
+    height:100%;
+    width: 200px;
     display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 16px;
-}
+    flex-direction: column;
+  }
 
 .card-filter {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    margin-right:16px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   // background-color: blue;
   }
 
 .btn-filter {
     color: $white;
     background-color: $orange;
     font-weight: 400;
-    
+    margin-bottom: 16px;
     opacity: 0.8;
     transition: opacity 0.5s;
-
+    border: none;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 64px;
 }
 
 .btn-filter:hover {
     color: $white;
     opacity: 1;
 }
+
+.btn-filter:hover {
+    color: $white;
+    opacity: 1;
+}
+
+.flex {
+  margin-top: 64px;
+  display: flex;
+}
+
+.fil {
+  margin-top: 20px;
+  width: 100%;
+    background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition-duration: 0.2s;
+  border: none;
+}
+
+

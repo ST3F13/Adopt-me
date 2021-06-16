@@ -11,8 +11,8 @@ class Pet < ApplicationRecord
 
   validates :category, presence: true, inclusion: { in: TYPES }
   validates :name, presence: true
-  validates :months, presence: true, numericality: { only_integer: true }
-  validates :years, presence: true, numericality: { only_integer: true }
+  # validates :months, numericality: { only_integer: true }
+  # validates :years, numericality: { only_integer: true }
   validates :description, presence: true, length: { minimum: 50 }
   validates :address, presence: true
   validates :race, presence: true
@@ -30,6 +30,12 @@ class Pet < ApplicationRecord
 
   def set_pet_age
     @pet = self
+    if @pet.years.nil?
+      @pet.years = 0
+    end
+    if @pet.months.nil?
+      @pet.months = 0
+    end
     if @pet.months >= 12
       set_months = (@pet.months % 12)
       set_years = (@pet.months / 12).floor

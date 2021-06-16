@@ -93,6 +93,8 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user = current_user
     authorize @pet
+    @pet.years = 0 if params[:pet][:years].empty?
+    @pet.months = 0 if params[:pet][:months].empty?
     if @pet.save
       flash[:success_confirmation] = "L'annonce de #{@pet.name} a été créée avec succès !"
       redirect_to pets_path
@@ -106,8 +108,11 @@ class PetsController < ApplicationController
   end
 
   def update
+    @user = @pet.user
     authorize @pet
-    if @pet.update(pet_params)
+    @pet.years = 0 if params[:pet][:years].empty?
+    @pet.months = 0 if params[:pet][:months].empty?
+    if @pet.update!(pet_params)
       flash[:infos_confirmation] = "L'annonce de #{@pet.name} a été mise à jour avec succès!"
       redirect_to @pet
     else

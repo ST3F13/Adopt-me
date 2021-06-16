@@ -1,46 +1,40 @@
 <div class="container">
   <h1>Mes annonces</h1>
-<br>
+  <br>
   <% if @pets.empty? %>
     <p>Vous n'avez pas encore déposé d'annonce</p>
   <% else %>
-      <div class="cards">
-        <% @pets.each do |pet| %>
-          <%= link_to pet_path(pet), class: "card-link" do %>
-            <div class="card-trip card-trip-home">
-              <% if pet.photos.attached? %>
-                <%= cl_image_tag pet.photos.first.key %>
-              <% else %>
-                <%= image_tag("flavicon.png") %>
-              <% end %>
-              <div class="card-trip-infos">
-                <div>
-                  <h2><%= pet.name %></h2>
-                  <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age_description %></p>
-                  <p><%= pet.description[0..50] %>...</p>
-                  <br>
-                  <% unless @adoptions.first.empty? %>
-                    <div class="adopted">
-                      <h2>Personnes intéressées:</h2>
-                      <% @adoptions.each do |adoption| %>
-                        <% if adoption.first.pet == pet %>
-                          <% adoption.each do |a| %>
-                            <p><%= a.user.username %></p>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-                <% if pet.user.photo.attached? %>
-                  <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
-                <% else %>
-                  <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
-                <% end %>
-              </div>
-            </div>
+    <div class="my-pet-flex">
+      <% @pets.each do |pet| %>
+        <div class="my-pet-card">
+          <% if pet.photos.attached? %>
+            <%= cl_image_tag pet.photos.first.key %>
+          <% else %>
+            <%= image_tag("flavicon.png") %>
           <% end %>
-        <% end %>
-      </div>
+          <div class="info-card-interess">
+            <div>
+              <h2><%= pet.name %></h2>
+              <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age_description %></p>
+              <p><%= pet.description[0..50] %>...</p>
+            </div>
+            <div class="my-pet-flex card-interess">
+              <% unless pet.adoptions.first.nil? %>
+                <h2>Personnes intéressées:</h2>
+                <div class="my-pet-flex2">
+                <% @adoptions.each do |adoption| %>
+                  <% if adoption.first.pet == pet %>
+                    <% adoption.each do |a| %>
+                      <p><%= link_to "#{a.user.username}", adoption_user_adoption_path(a), class: "intrssd" %></p>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

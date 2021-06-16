@@ -41,8 +41,9 @@
           <div class="card-trip-infos">
             <div>
               <h2><%= pet.name %></h2>
-              <h4><%= pet.age_description %></h4>
-              <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age_description %></p>
+              <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age_description%></p>
+              <br>
+              <p><%= pet.description[0..50] %>...</p>
             </div>
           </div>
         </div>

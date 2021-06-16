@@ -1,6 +1,7 @@
 class AdoptionsController < ApplicationController
   before_action :find_pet, only: [:new, :create]
   before_action :find_adoption, only: [:show, :adoption_user, :destroy]
+  skip_after_action :verify_authorized, only: [:adoption_user]
 
   def index
     @adoptions = policy_scope(Adoption).where(user: current_user)

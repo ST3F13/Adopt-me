@@ -134,6 +134,10 @@
   flex-direction: column;
 }
 
+.my-pet-flex2 {
+  display: flex;
+}
+
 .my-pet-card {
   overflow: hidden;
   background: white;
@@ -159,7 +163,7 @@
 }
 
 .my-pet-card p {
-  font-size: 12px;
+  font-size: 16px;
   opacity: .7;
   margin-left: 16px;
   color: $black;
@@ -167,11 +171,19 @@
 }
 
 .card-interess {
-  background-color: red;
-  margin-left: 16px;
   color: black;
 }
 
 .info-card-interess{
   width: 600px;
+}
+
+.intrssd {
+  color: $orange;
+  opacity: 0.8;
+  &:hover{
+  color: $orange;
+  opacity: 1;
+  text-decoration: none;
+  }
 }

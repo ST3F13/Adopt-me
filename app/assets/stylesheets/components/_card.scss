@@ -128,3 +128,50 @@
      font-weight: bold;
   }
 }
+
+.my-pet-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-pet-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition-duration: 0.2s;
+  height: 200px;
+  margin: 16px;
+  display: flex;
+}
+
+.my-pet-card > img {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+  margin-right: 16px;
+}
+
+.my-pet-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 16px;
+  color: $black;
+}
+
+.my-pet-card p {
+  font-size: 12px;
+  opacity: .7;
+  margin-left: 16px;
+  color: $black;
+  margin-bottom: 0!important;
+}
+
+.card-interess {
+  background-color: red;
+  margin-left: 16px;
+  color: black;
+}
+
+.info-card-interess{
+  width: 600px;
+}

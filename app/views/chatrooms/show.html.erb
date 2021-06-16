@@ -18,15 +18,50 @@
     <% end %>
   </div>
 
-  <div class="users-messages">
-    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-        <%= render 'messages/messages', messages: @chatroom.messages %>
+  <div class="chat">
+    <div class="users-messages">
+      <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+        <% @chatroom.messages.each do |message| %>
+        <% if message.user == current_user %>
+       <div class="msg msg-droite">
+          <%= message.user.username %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-bordered" %>
+          <% else %>
+            <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
+          <% end %>
+          <br>
+          <div class ="txt txt-droite">
+            <%= message.content %>
+          </div>
+       </div>
+       <% else %>
+         <div class="msg msg-gauche">
+          <% if message.user.photo.attached? %>
+            <%= cl_image_tag message.user.photo.key, crop: :fill, class: "avatar-bordered" %>
+            <%= message.user.username %>
+            <br>
+            <div class ="txt txt-gauche">
+              <%= message.content %>
+            </div>
+          <% else %>
+            <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
+            <%= message.user.username %>
+            <br>
+            <div class ="txt txt-gauche">
+              <%= message.content %>
+            </div>
+        <% end %>
+         </div>
+       <% end %>
+       <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="new-message-input">
-    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-      <%= f.input :content, as: :string, label: false, placeholder: "Entrer votre message" %>
-    <% end %>
+    <div class="new-message-input">
+      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+        <%= f.input :content, as: :string, label: false, placeholder: "Entrer votre message" %>
+      <% end %>
+    </div>
   </div>
 </div>

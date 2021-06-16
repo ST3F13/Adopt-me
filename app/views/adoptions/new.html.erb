@@ -5,7 +5,7 @@
 
     <p id="warning">Attention ! Adopter un animal est un acte qui vous engage sur plusieurs années !</p>
     <p>Accueillir un animal c’est un peu comme élever un enfant. Vous devrez l’éduquer, le nourrir, prendre soin de lui et le protéger. Ce n’est donc pas une décision à prendre à la légère, elle devra être mûrement réfléchie.
-    Pour cela, posez-vous les bonnes questions et réfléchissez à toutes les conséquences de cette acquisition.</p>
+    Pour cela, posez-vous les bonnes questions et réfléchissez à toutes les conséquences de cette adoption.</p>
   </div>
 
   <div class="content-form">
@@ -13,6 +13,6 @@
       <%= f.input :adoption_message, label: "Votre message", placeholder:"Dites à #{@pet.user.first_name} pourquoi vous voulez adopter son animal.", input_html: { class: "input-field" }, label_html: { class: 'label-field' } %>
       <%= f.submit "J'accepte les conditions (envoyer mon message)", class: "btn btn-log" %>
     <% end %>
-    <%= link_to "Je refuse (retour à la page d'acceuil)", root_path, class: "btn btn-secondary" %>
+    <%= link_to "Je refuse (retour à la page d'accueil)", root_path, class: "btn btn-secondary" %>
   </div>
 </div>

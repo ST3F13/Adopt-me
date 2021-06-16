@@ -78,7 +78,7 @@ class PetsController < ApplicationController
     @pets = Pet.where(user: current_user)
     @adoptions = []
     @pets.each do |pet|
-      unless pet.adoptions.nil?
+      unless pet.adoptions.first.nil?
         @adoptions << pet.adoptions
       end
     end

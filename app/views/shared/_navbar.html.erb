@@ -21,24 +21,23 @@
           <%= image_tag("msg_logo.png", class: "messagerie dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <% chatrooms = current_user.chatrooms %>
-            <% adoptions = current_user.adoptions %>
+           <!-- < adoptions = current_user.adoptions > -->
             <% pets = current_user.pets %>
-
             <% if chatrooms.empty? %>
               <p class="no-message">Vous n'avez pas de messagerie ouverte</p>
             <% else %>
               <% chatrooms.each do |chatroom| %>
-                <% unless adoptions.nil? %>
-                  <% adoptions.each do |adoption| %>
-                    <%= link_to "#{adoption.pet.name} & #{adoption.pet.user.username}", chatroom_path(chatroom), class: "dropdown-item" %>
-                  <% end %>
+                <% if chatroom.adoption.user == current_user %>
+                <!--  < adoptions.each do |adoption| > -->
+                    <%= link_to "#{chatroom.adoption.pet.name} & #{chatroom.adoption.pet.user.username}", chatroom_path(chatroom), class: "dropdown-item" %>
+                <!--  < end > -->
                 <% end %>
-                <% unless pets.nil? %>
-                  <% pets.each do |pet| %>
-                    <% pet.adoptions.each do |adoption| %>
-                      <%= link_to "#{adoption.user.username} pour #{pet.name}", chatroom_path(adoption.chatroom), class: "dropdown-item" %>
-                    <% end %>
-                  <% end %>
+                <% if chatroom.adoption.pet.user == current_user %>
+                <!--  < chatroom.adoption.pets.each do |pet| > -->
+                <!--    < pet.adoptions.each do |adoption| > -->
+                      <%= link_to "#{chatroom.adoption.user.username} pour #{chatroom.adoption.pet.name}", chatroom_path(chatroom), class: "dropdown-item" %>
+                  <!--  < end > -->
+                <!--  < end > -->
                 <% end %>
               <% end %>
             <% end %>

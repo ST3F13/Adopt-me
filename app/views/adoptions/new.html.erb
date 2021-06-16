@@ -1,11 +1,18 @@
-<div class="container"> 
-  <h1>Envoyez un message à <%= @pet.user.first_name %></h1>
+<div class="container">
 
-  <p id="warning">Attention ! Adopter un animal est un acte qui vous engage sur plusieurs années ! </p>
-  <p>Avant d'adopter, vérifiez d'avoir les ressources nécessaires à son bien-être.</p>
+  <div class="content-top">
+    <h1>Envoyez un message à <%= @pet.user.first_name %></h1>
 
-  <%= simple_form_for [@pet, @adoption] do |f| %>
-    <%= f.input :adoption_message, label: "Votre message", placeholder:"Dites à #{@pet.user.first_name} pourquoi vous voulez adopter son animal.", input_html: { class: "input-field" }, label_html: { class: 'label-field' } %>
-    <%= f.submit "Envoyer à #{@pet.user.first_name}", class: "btn btn-log" %>
-  <% end %>
-</div> 
+    <p id="warning">Attention ! Adopter un animal est un acte qui vous engage sur plusieurs années !</p>
+    <p>Accueillir un animal c’est un peu comme élever un enfant. Vous devrez l’éduquer, le nourrir, prendre soin de lui et le protéger. Ce n’est donc pas une décision à prendre à la légère, elle devra être mûrement réfléchie.
+    Pour cela, posez-vous les bonnes questions et réfléchissez à toutes les conséquences de cette acquisition.</p>
+  </div>
+
+  <div class="content-form">
+    <%= simple_form_for [@pet, @adoption] do |f| %>
+      <%= f.input :adoption_message, label: "Votre message", placeholder:"Dites à #{@pet.user.first_name} pourquoi vous voulez adopter son animal.", input_html: { class: "input-field" }, label_html: { class: 'label-field' } %>
+      <%= f.submit "J'accepte les conditions (envoyer mon message)", class: "btn btn-log" %>
+    <% end %>
+    <%= link_to "Je refuse (retour à la page d'acceuil)", root_path, class: "btn btn-secondary" %>
+  </div>
+</div>

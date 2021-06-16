@@ -4,127 +4,122 @@
     <h1>Nos animaux à l'adoption</h1>
   </div>
 
-      <%= form_tag pets_path, method: :get, class: "input-group mb-3 searchbar" do %>
-        <%= select_tag 'Type',
-          options_for_select(Pet::TYPES, params[:Type]),
-          :prompt => "Catégorie",
-          class: 'form-control transparence' %>
+  <%= form_tag pets_path, method: :get, class: "input-group mb-3 searchbar" do %>
+    <%= select_tag 'Type',
+      options_for_select(Pet::TYPES, params[:Type]),
+      :prompt => "Catégorie",
+      class: 'form-control transparence' %>
 
-        <%= text_field_tag 'City', "",
-          class: 'form-control transparence',
-          placeholder: "Localisation",
-          value: params[:City] %>
+    <%= text_field_tag 'City', "",
+      class: 'form-control transparence',
+      placeholder: "Localisation",
+      value: params[:City] %>
 
-        <div class="home-searchbar-range">
-          <span class="range-value">0 </span>
-          <%= range_field_tag 'Range', :in => 0..100, :step => 10,
-          class: 'form-range home-searchbar-range' %>
-          <span class="range-value"> 100 km</span>
-        </div>
+    <div class="home-searchbar-range">
+      <span class="range-value">0 </span>
+      <%= range_field_tag 'Range', :in => 0..100, :step => 10,
+      class: 'form-range home-searchbar-range' %>
+      <span class="range-value"> 100 km</span>
+    </div>
 
-        <%= submit_tag "Rechercher", class: "input-group-text btn-search btn-home-searchbar" %>
+    <%= submit_tag "Nouvelle Recherche", class: "input-group-text btn-index-search btn-index-searchbar" %>
+  <% end %>
+
+  <div class="flex">
+
+    <div class="card-filter card-trip2">
+      <br>
+      <h5>Caractéristiques</h5>
+      <%= form_tag pets_path, method: :get, class: "mb-3 filter" do %>
+
+        <%= hidden_field_tag 'City', "",
+        class: 'form-control transparence',
+        placeholder: "Localisation",
+        value: params[:City] %>
+
+        <%= hidden_field_tag 'Range', "",
+        :in => 0..100, 
+        :step => 10,
+        value: params[:Range] %>
+
+        <%= hidden_field_tag 'Type', "",
+          value: params[:Type],
+          class: "fil" %>
+
+        <%= select_tag 'Size',
+          options_for_select(Pet::SIZE, params[:Size]),
+          prompt: "Taille",
+          class: "fil"  %>
+
+        <%= select_tag 'Hair',
+          options_for_select(Pet::HAIR, params[:Hair]),
+          prompt: "Poil",
+          class: "fil"  %>
+
+        <%= select_tag 'Personality',
+          options_for_select(Pet::PERSONALITY, params[:Personality]),
+          prompt: "Personnalité",
+          class: "fil"  %>
+
+        <%= select_tag 'Gender',
+          options_for_select(Pet::GENDER, params[:Gender]),
+          prompt: "Genre",
+          class: "fil"  %>
+        <%= submit_tag "Filtrer", class: "btn-filter" %>
       <% end %>
+    </div>
 
-      <div class="flex">
-
-         <div class="card-filter card-trip2">
-<br>
-          <h5>Caractéristiques</h5>
-            <%= form_tag pets_path, method: :get, class: "mb-3 filter" do %>
-
-              <%= hidden_field_tag 'City', "",
-              class: 'form-control transparence',
-              placeholder: "Localisation",
-              value: params[:City] %>
-
-              <%= select_tag 'Type',
-                options_for_select(Pet::TYPES, params[:Type]),
-                prompt: "Catégorie",
-                class: "fil" %>
-
-              <%= select_tag 'Size',
-                options_for_select(Pet::SIZE, params[:Size]),
-                prompt: "Taille",
-                class: "fil"  %>
-
-              <%= select_tag 'Hair',
-                options_for_select(Pet::HAIR, params[:Hair]),
-                prompt: "Poil",
-                class: "fil"  %>
-
-              <%= select_tag 'Personality',
-                options_for_select(Pet::PERSONALITY, params[:Personality]),
-                prompt: "Personnalité",
-                class: "fil"  %>
-
-              <%= select_tag 'Gender',
-                options_for_select(Pet::GENDER, params[:Gender]),
-                prompt: "Sexe",
-                class: "fil"  %>
-
-              <!-- <span class="age-value">0</span>
-              <%= range_field_tag 'Age',
-              :in => 0..10,
-              :step => 1,
-              class: 'form-range ' %>
-              <span class="age-value"> 10+</span> -->
-
-              <%= submit_tag "Filtrer", class: "btn-filter" %>
-            <% end %>
-          </div>
-
-
-        <div class="cards-container">
-          <div class="cards">
-            <% @pets.each do |pet| %>
-              <% if pet.adopted? == true %>
-                  <div class="card-trip card-adopted">
-                      <% if pet.photos.attached? %>
-                        <%= cl_image_tag pet.photos.first.key %>
-                      <% else %>
-                        <%= image_tag("flavicon.png") %>
-                      <% end %>
-                      <p id="adopted"> Adopté </p>
-                      <div class="card-trip-infos">
-                        <div>
-                          <h2><%= pet.name %></h2>
-                          <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age_description %></p>
-                          <br>
-                          <p><%= pet.description[0..50] %>...</p>
-                        </div>
-                        <% if pet.user.photo.attached? %>
-                          <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
-                        <% else %>
-                          <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
-                        <% end %>
-                      </div>
+    <div class="cards-container">
+      <div class="cards">
+        <% @pets.each do |pet| %>
+          <% if pet.adopted? == true %>
+            <div class="card-trip card-adopted">
+              <% if pet.photos.attached? %>
+                <%= cl_image_tag pet.photos.first.key %>
+              <% else %>
+                <%= image_tag("flavicon.png") %>
+              <% end %>
+              <p id="adopted"> Adopté </p>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= pet.name %></h2>
+                  <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age_description %></p>
+                  <br>
+                  <p><%= pet.description[0..50] %>...</p>
+                </div>
+                <% if pet.user.photo.attached? %>
+                  <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                <% else %>
+                  <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
+                <% end %>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to pet_path(pet), class: "card-link" do %>
+              <div class="card-trip card-trip-home">
+                <% if pet.photos.attached? %>
+                  <%= cl_image_tag pet.photos.first.key %>
+                <% else %>
+                  <%= image_tag("flavicon.png") %>
+                <% end %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2><%= pet.name %></h2>
+                    <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age_description %></p>
+                    <br>
+                    <p><%= pet.description[0..50] %>...</p>
                   </div>
-                    <% else %>
-                      <%= link_to pet_path(pet), class: "card-link" do %>
-                          <div class="card-trip card-trip-home">
-                            <% if pet.photos.attached? %>
-                              <%= cl_image_tag pet.photos.first.key %>
-                            <% else %>
-                              <%= image_tag("flavicon.png") %>
-                            <% end %>
-                            <div class="card-trip-infos">
-                              <div>
-                                <h2><%= pet.name %></h2>
-                                <p><strong><%= pet.category %></strong> - <%= pet.gender %>, <%= pet.age_description %></p>
-                                <br>
-                                <p><%= pet.description[0..50] %>...</p>
-                              </div>
-                              <% if pet.user.photo.attached? %>
-                                <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
-                              <% else %>
-                                <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
-                              <% end %>
-                            </div>
-                          </div>
-                            <% end %>
-                          <% end %>
-                        <% end %>
-          </div>
-        </div>
+                  <% if pet.user.photo.attached? %>
+                    <%= cl_image_tag pet.user.photo.key, class: "card-trip-user avatar-bordered" %>
+                  <% else %>
+                    <%= image_tag("default_avatar.jpg", class: "card-trip-user avatar-bordered") %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
+    </div>
+  </div>
 </div>

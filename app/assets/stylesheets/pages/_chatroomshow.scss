@@ -10,12 +10,63 @@
 }
 
 .users-messages {
-  height: 100vh;
+  height: auto;
+}
 
+.chat {
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition-duration: 0.2s;
+  padding: 64px 64px 32px 64px;
+  height: auto;
+}
+
+.msg {
+  width: auto;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  color: $orange;
+}
+
+.txt {
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition-duration: 0.2s;
+  width: 50%;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  height: auto;
+  color: #0E0000!important;
+}
+
+.msg-droite{
+  text-align: right;
+}
+
+.msg-gauche{
+  text-align: left;
 }
 
 .new-message-input {
+  margin-top: 16px;
   position: sticky;
-  bottom: 16px;
   width: 100%;
 }
+
+#message_content {
+    margin-top: 12px;
+    border: 1px solid $orange;
+}
+
+.txt-droite {
+  padding-right: 12px;
+  text-align: right;
+  margin-left: 50%;
+}
+
+.txt-gauche {
+  padding-left: 12px;
+  text-align: left;
+}
+

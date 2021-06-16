@@ -112,12 +112,12 @@ class PetsController < ApplicationController
     authorize @pet
     @pet.years = 0 if params[:pet][:years].empty?
     @pet.months = 0 if params[:pet][:months].empty?
-    if @pet.update!(pet_params)
+    if @pet.update(pet_params)
       flash[:infos_confirmation] = "L'annonce de #{@pet.name} a été mise à jour avec succès!"
       redirect_to @pet
     else
       flash[:warning_confirmation] = "L'annonce de #{@pet.name} n'a pas été mise à jour!"
-      render :show
+      render :edit
     end
   end
 

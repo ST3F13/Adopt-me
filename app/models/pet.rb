@@ -59,7 +59,7 @@ class Pet < ApplicationRecord
         @pet.age_description = "#{@pet.years} ans"
       end
     else
-      @pet.age_description = "Non renseigné"
+      @pet.age_description = "Age non renseigné"
     end
   end
 end

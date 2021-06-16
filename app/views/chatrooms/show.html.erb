@@ -1,7 +1,32 @@
-<h1>#<%= @chatroom.adoption.pet.name %> & <%= @chatroom.adoption.pet.user.username %></h1>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-    <%= render 'messages/messages', messages: @chatroom.messages %>
+<div class="container">
+
+  <div class="user-infos">
+    <% if @chatroom.adoption.pet.user == current_user %>
+      <% if @chatroom.adoption.user.photo.attached? %>
+        <%= cl_image_tag @chatroom.adoption.user.photo.key, crop: :fill, class: "avatar-bordered" %>
+      <% else %>
+        <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
+      <% end %>
+      <h1><%= @chatroom.adoption.user.username %></h1>
+    <% elsif @chatroom.adoption.user == current_user %>
+      <% if @chatroom.adoption.pet.user.photo.attached? %>
+        <%= cl_image_tag @chatroom.adoption.pet.user.photo.key, crop: :fill, class: "avatar-bordered" %>
+      <% else %>
+        <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
+      <% end %>
+      <h1><%= @chatroom.adoption.pet.name %> et <%= @chatroom.adoption.pet.user.username %></h1>
+    <% end %>
+  </div>
+
+  <div class="users-messages">
+    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+        <%= render 'messages/messages', messages: @chatroom.messages %>
+    </div>
+  </div>
+
+  <div class="new-message-input">
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+      <%= f.input :content, as: :string, label: false, placeholder: "Entrer votre message" %>
+    <% end %>
+  </div>
 </div>
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, as: :string, label: false, placeholder: "Message" %>
-<% end %>

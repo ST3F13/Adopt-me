@@ -1,0 +1,5 @@
+meta_product_name: "AdoptMe"
+meta_title: "AdoptMe - People need Pets, Pets need People"
+meta_description: "Vous souhaitez adopter un animal auprès d'un particulier ? Vous ne pouvez malheureusement plus garder un animal et souhaitez le donner à quelqu'un de confiance ? Cette application a pour vocation d'en finir avec l'abandon des animaux en mettant en relation les personnes devant se séparer d'un animal et celles souhaitant en adopter un."
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

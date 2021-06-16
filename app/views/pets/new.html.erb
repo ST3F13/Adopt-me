@@ -19,13 +19,13 @@
             <%= f.input :years,
                     label: "Années",
                     placeholder: "Années",
-                    input_html: { class: "input-field" },
+                    input_html: { class: "input-field", :value => 0 },
                     label_html: { class: 'label-field' } %>
           </div>
           <%= f.input :months,
                     label: "Mois",
                     placeholder: "Mois",
-                    input_html: { class: "input-field" },
+                    input_html: { class: "input-field", :value => 0 },
                     label_html: { class: 'label-field' } %>
         </div>
         <%= f.input :gender,

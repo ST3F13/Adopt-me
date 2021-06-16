@@ -97,14 +97,14 @@
           <ul>
             <li>Nom: <%= @pet.name %></li>
             <br>
+            <li>Genre: <%= @pet.gender %></li>
             <li>Age: <%= @pet.age_description %></li>
             <li>Race: <%= @pet.race %></li>
             <li>Taille: <%= @pet.size %></li>
             <li>Poil: <%= @pet.hair %></li>
-            <li>Personalité: <%= @pet.personality %></li>
+            <li>Personnalité: <%= @pet.personality %></li>
             <li>A l'aise avec des enfants: <%= @pet.child_compatibility ? "Oui" : "Non" %></li>
-            <br>
-            <li>Genre: <%= @pet.gender %></li>
+            <li>Besoin d'un jardin: <%= @pet.garden_need ? "Oui" : "Non" %></li>
           </ul>
         </div>
         <div class="pet-health">

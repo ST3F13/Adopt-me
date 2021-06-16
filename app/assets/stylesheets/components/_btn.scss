@@ -23,3 +23,24 @@
     background-color: $orange!important;
     opacity: 1!important;
 }
+
+.btn-index-searchbar {
+    border: 1px solid rgba(100, 100, 100, 0.8);
+    border-radius : 0 4px 4px 0;
+}
+
+.btn-index-search {
+    opacity: 0.8;
+    padding: 0 32px;
+    color: $white;
+    background-color: $orange;
+    transition: opacity 0.5s;
+    &:hover {
+    opacity: 1;
+    cursor: pointer;
+    border: 1px solid transparent;
+    }
+    &:active {
+    opacity: 1;
+    }
+}

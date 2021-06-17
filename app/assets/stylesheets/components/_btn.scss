@@ -44,3 +44,16 @@
     opacity: 1;
     }
 }
+
+.btn-edit-pet {
+  font-weight: normal !important;
+  text-decoration: none;
+  color: $orange;
+  opacity: 0.6;
+  &:hover {
+    ont-weight: normal !important;
+    text-decoration: none;
+    color: $orange;
+    opacity: 1;
+  }
+}

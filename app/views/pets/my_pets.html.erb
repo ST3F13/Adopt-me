@@ -14,7 +14,7 @@
           <% end %>
           <div class="info-card-interess">
             <div>
-              <h2><%= pet.name %></h2>
+              <h2><%= pet.name %> · <%= link_to "Mettre à jour son profil", edit_pet_path(pet), class: "btn-edit-pet" %></h2>
               <p> <%= pet.category %> - <%= pet.gender %>, <%= pet.age_description %></p>
               <p><%= pet.description[0..50] %>...</p>
             </div>

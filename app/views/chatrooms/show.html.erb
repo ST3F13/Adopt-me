@@ -23,37 +23,21 @@
       <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
         <% @chatroom.messages.each do |message| %>
         <% if message.user == current_user %>
-       <div class="msg msg-droite">
-          <%= message.user.username %>
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-bordered" %>
-          <% else %>
-            <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
-          <% end %>
-          <br>
-          <div class ="txt txt-droite">
-            <%= message.content %>
-          </div>
-       </div>
-       <% else %>
-         <div class="msg msg-gauche">
-          <% if message.user.photo.attached? %>
-            <%= cl_image_tag message.user.photo.key, crop: :fill, class: "avatar-bordered" %>
+         <div class="msg msg-droite">
             <%= message.user.username %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar-bordered" %>
+            <% else %>
+              <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
+            <% end %>
             <br>
-            <div class ="txt txt-gauche">
+            <div class ="txt txt-droite">
               <%= message.content %>
             </div>
-          <% else %>
-            <%= image_tag("default_avatar.jpg", class: "avatar-bordered") %>
-            <%= message.user.username %>
-            <br>
-            <div class ="txt txt-gauche">
-              <%= message.content %>
-            </div>
-        <% end %>
          </div>
-       <% end %>
+         <% else %>
+           <%= render "messages/message", message: message %>
+         <% end %>
        <% end %>
       </div>
     </div>

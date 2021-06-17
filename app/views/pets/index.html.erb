@@ -10,15 +10,18 @@
       :prompt => "Catégorie",
       class: 'form-control transparence' %>
 
-    <%= text_field_tag 'City', "",
-      class: 'form-control transparence',
-      placeholder: "Localisation",
-      value: params[:City] %>
+    <div class="loc-field">
+      <%= text_field_tag 'City', "",
+        class: "form-control transparence no-radius",
+        placeholder: "Localisation",
+        id: "user_address",
+        value: params[:City] %>
+    </div>
 
     <div class="home-searchbar-range">
       <span class="range-value">0 </span>
       <%= range_field_tag 'Range', :in => 0..100, :step => 10,
-      class: 'form-range home-searchbar-range' %>
+      class: 'form-range' %>
       <span class="range-value"> 100 km</span>
     </div>
 
@@ -38,7 +41,7 @@
         value: params[:City] %>
 
         <%= hidden_field_tag 'Range', "",
-        :in => 0..100, 
+        :in => 0..100,
         :step => 10,
         value: params[:Range] %>
 
